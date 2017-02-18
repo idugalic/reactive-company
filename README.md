@@ -1,6 +1,6 @@
 # reactive-company
 
-This project is intended to demonstrate end-to-end best practices for building a reactive web application.
+This project is intended to demonstrate best practices for building a reactive web application with Spring platform.
 
 ## Reactive programming
 
