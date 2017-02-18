@@ -31,7 +31,7 @@ import reactor.test.StepVerifier;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ApplicationIntegrationTest {
 
-	WebTestClient webClient;
+	WebTestClient webTestClient;
 	
 	List<BlogPost> expected;
 	
@@ -40,14 +40,14 @@ public class ApplicationIntegrationTest {
 	
 	@Before
 	public void setup() {
-		webClient = WebTestClient.bindToController(new BlogPostController(blogPostRepository)).build();
+		webTestClient = WebTestClient.bindToController(new BlogPostController(blogPostRepository)).build();
 		expected = blogPostRepository.findAll().collectList().block();
 
 	}
 
 	@Test
 	public void listBlogPostsIntegrationTest() {
-		this.webClient.get().uri("/blogposts")
+		this.webTestClient.get().uri("/blogposts")
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
@@ -56,7 +56,7 @@ public class ApplicationIntegrationTest {
 	
 	@Test
 	public void streamBlogPostsIntegrationTest() throws Exception {
-		ExchangeResult<Flux<BlogPost>> result = this.webClient.get()
+		ExchangeResult<Flux<BlogPost>> result = this.webTestClient.get()
 			.uri("/blogposts")
 			.accept(TEXT_EVENT_STREAM)
 			.exchange()
@@ -74,7 +74,7 @@ public class ApplicationIntegrationTest {
 	}
 	@Test
 	public void listBlogPostsByTitleIntegrationTest() {
-		this.webClient.get().uri("/blogposts/search/bytitle?title=title1")
+		this.webTestClient.get().uri("/blogposts/search/bytitle?title=title1")
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
@@ -82,7 +82,7 @@ public class ApplicationIntegrationTest {
 	}
 	@Test
 	public void getBlogPostIntegrationTest() throws Exception {
-		this.webClient.get().uri("/blogposts/"+expected.get(0).getId())
+		this.webTestClient.get().uri("/blogposts/"+expected.get(0).getId())
 				.exchange()
 				.expectStatus().isOk()
 				.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
@@ -91,7 +91,7 @@ public class ApplicationIntegrationTest {
 	
 	@Test
 	public void postBlogPostIntegrationTest() throws Exception {
-		this.webClient.post().uri("/blogposts")
+		this.webTestClient.post().uri("/blogposts")
 				.exchange(Mono.just(new BlogPost("authorId5", "title5", "content5", "tagString5")), BlogPost.class)
 				.expectStatus().isOk()
 				.expectBody().isEmpty();
