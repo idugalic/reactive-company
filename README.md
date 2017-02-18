@@ -72,14 +72,9 @@ SAMPLE HERE
 
 ## Running instructions
 
-### Prerequisites
-
-MongoDB
-
-### from the bash terminal
+This application is using embedded mongo database. You do not have to install or run mongo database.
 
 ```bash
-$ mongod
 $ cd reactive-company
 $ ./mvnw spring-boot:run
 ```
