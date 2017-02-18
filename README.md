@@ -4,15 +4,14 @@ This project is intended to demonstrate best practices for building a reactive w
 
 ## Table of Contents
 
-   * [reactive-company](#reactive-company)
-      * [Reactive programming](#reactive-programming)
-         * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
-            * [Server side](#server-side)
-               * [Annotation based](#annotation-based)
-            * [Client side](#client-side)
-         * [Spring Reactive data](#spring-reactive-data)
-      * [Running instructions](#running-instructions)
-      * [References](#references)
+   * [Reactive programming](#reactive-programming)
+      * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
+         * [Server side](#server-side)
+            * [Annotation based](#annotation-based)
+         * [Client side](#client-side)
+      * [Spring Reactive data](#spring-reactive-data)
+   * [Running instructions](#running-instructions)
+   * [References](#references)
 
 ## Reactive programming
 
