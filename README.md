@@ -58,7 +58,45 @@ Both programming models are executed on the same reactive foundation that adapts
 
 WebFlux includes a functional, reactive WebClient that offers a fully non-blocking and reactive alternative to the RestTemplate. It exposes network input and output as a reactive ClientHttpRequest and ClientHttpRespones where the body of the request and response is a Flux<DataBuffer> rather than an InputStream and OutputStream. In addition it supports the same reactive JSON, XML, and SSE serialization mechanism as on the server side so you can work with typed objects.
 
-SAMPLE HERE
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+public class ApplicationWebClientIntegrationTest {
+
+	private WebClient webClient;
+	
+	@LocalServerPort
+    private Integer port;
+	
+	@Autowired
+	BlogPostRepository blogPostRepository;
+	
+    List<BlogPost> expected;
+	
+	@Before
+    public void setup() {
+		webClient = WebClient.create("http://localhost:"+port);
+		expected = blogPostRepository.findAll().collectList().block();
+    }
+	
+	@Test
+	public void streamBlogPostsIntegrationTest() throws Exception {
+		Flux<BlogPost> result = this.webClient.get()
+			.uri("/blogposts")
+			.accept(TEXT_EVENT_STREAM)
+			.exchange()
+			.flatMap(bp->bp.bodyToFlux(BlogPost.class));
+
+		StepVerifier.create(result)
+			.expectNext(expected.get(0), expected.get(1))
+			.expectNextCount(1)
+			.consumeNextWith(blogPost -> assertThat(blogPost.getAuthorId(), endsWith("4")))
+			.thenCancel()
+			.verify();
+	}
+}
+
+```
 
 ### Spring Reactive data
 
