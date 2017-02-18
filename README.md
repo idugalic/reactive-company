@@ -70,7 +70,14 @@ SAMPLE HERE
 
 ## Running instructions
 
+### Prerequisites
+
+MongoDB
+
+### from the bash terminal
+
 ```bash
+$ mongod
 $ cd reactive-company
 $ ./mvnw spring-boot:run
 ```

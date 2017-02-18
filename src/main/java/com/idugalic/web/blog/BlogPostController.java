@@ -1,7 +1,6 @@
 package com.idugalic.web.blog;
 
 import org.reactivestreams.Publisher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +13,19 @@ import com.idugalic.domain.blog.BlogPostRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * @author idugalic
+ * 
+ * Blog post controller
+ * 
+ * On the server-side WebFlux supports 2 distinct programming models:
+ *
+ * - Annotation-based with @Controller and the other annotations supported also with Spring MVC
+ * - Functional, Java 8 lambda style routing and handling
+ * 
+ * This is example of 'Annotation-based with @Controller' programming model.
+ *
+ */
 @RestController
 public class BlogPostController {
 
