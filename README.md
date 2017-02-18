@@ -1,5 +1,13 @@
 # reactive-company
 
+## Run
+
+```bash
+$ cd reactive-company
+$ ./mvnw spring-boot:run
+```
+
+
 ## References
 
 - https://spring.io/blog/2016/11/28/going-reactive-with-spring-data
