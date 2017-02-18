@@ -22,7 +22,33 @@ On the server-side WebFlux supports 2 distinct programming models:
 - Annotation-based with @Controller and the other annotations supported also with Spring MVC
 - Functional, Java 8 lambda style routing and handling
 
-SAMPLE HERE
+##### Annotation based
+```java
+@RestController
+public class BlogPostController {
+
+	private final BlogPostRepository blogPostRepository;
+
+	public BlogPostController(BlogPostRepository blogPostRepository) {
+		this.blogPostRepository = blogPostRepository;
+	}
+
+	@PostMapping("/blogposts")
+	Mono<Void> create(@RequestBody Publisher<BlogPost> blogPostStream) {
+		return this.blogPostRepository.save(blogPostStream).then();
+	}
+	
+	@GetMapping("/blogposts")
+	Flux<BlogPost> list() {
+		return this.blogPostRepository.findAll();
+	}
+	
+	@GetMapping("/blogposts/{id}")
+	Mono<BlogPost> findById(@PathVariable String id) {
+		return this.blogPostRepository.findOne(id);
+	}
+}
+```
 
 Both programming models are executed on the same reactive foundation that adapts non-blocking HTTP runtimes to the Reactive Streams API.
 
