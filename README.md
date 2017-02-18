@@ -2,6 +2,18 @@
 
 This project is intended to demonstrate best practices for building a reactive web application with Spring platform.
 
+## Table of Contents
+
+   * [reactive-company](#reactive-company)
+      * [Reactive programming](#reactive-programming)
+         * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
+            * [Server side](#server-side)
+               * [Annotation based](#annotation-based)
+            * [Client side](#client-side)
+         * [Spring Reactive data](#spring-reactive-data)
+      * [Running instructions](#running-instructions)
+      * [References](#references)
+
 ## Reactive programming
 
 In plain terms reactive programming is about [non-blocking](http://www.reactivemanifesto.org/glossary#Non-Blocking) applications that are [asynchronous](http://www.reactivemanifesto.org/glossary#Asynchronous) and [message-driven](http://www.reactivemanifesto.org/glossary#Message-Driven) and require a small number of threads to [scale](http://www.reactivemanifesto.org/glossary#Scalability) vertically (i.e. within the JVM) rather than horizontally (i.e. through clustering).
