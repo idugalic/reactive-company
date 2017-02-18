@@ -72,7 +72,15 @@ SAMPLE HERE
 
 ## Running instructions
 
-This application is using embedded mongo database. You do not have to install or run mongo database.
+This application is using embedded mongo database for testing only. 
+You have to install and run mongo database before you run the application.
+
+```bash
+$ brew install mongodb
+$ mongod
+```
+
+Run it:
 
 ```bash
 $ cd reactive-company
