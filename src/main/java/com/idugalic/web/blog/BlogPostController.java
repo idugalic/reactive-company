@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.idugalic.domain.blog.BlogPost;
@@ -49,5 +50,12 @@ public class BlogPostController {
 	Mono<BlogPost> findById(@PathVariable String id) {
 		return this.blogPostRepository.findOne(id);
 	}
+	
+	@GetMapping("/blogposts/search/bytitle")
+	Flux<BlogPost> findByTitle(@RequestParam String title) {
+		return this.blogPostRepository.findByTitle(Mono.just(title));
+	}
+	
+	
 
 }

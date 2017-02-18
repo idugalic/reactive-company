@@ -68,7 +68,13 @@ The repositories programming model is the most high-level abstraction Spring Dat
 
 In contrast to the traditional repository interfaces, a reactive repository uses reactive types as return types and can do so for parameter types, too.
 
-SAMPLE HERE
+```java
+public interface BlogPostRepository extends ReactiveSortingRepository<BlogPost, String>{
+    
+	Flux<BlogPost> findByTitle(Mono<String> title);
+
+}
+```
 
 ## Running instructions
 

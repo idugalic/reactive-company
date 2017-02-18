@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.springframework.http.MediaType.TEXT_EVENT_STREAM;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -71,7 +72,14 @@ public class ApplicationIntegrationTest {
 			.thenCancel()
 			.verify();
 	}
-	
+	@Test
+	public void listBlogPostsByTitleIntegrationTest() {
+		this.webClient.get().uri("/blogposts/search/bytitle?title=title1")
+			.exchange()
+			.expectStatus().isOk()
+			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+			.expectBody(BlogPost.class).list().isEqualTo(expected.stream().filter(bp->bp.getTitle().equals("title1")).collect(Collectors.toList()));
+	}
 	@Test
 	public void getBlogPostIntegrationTest() throws Exception {
 		this.webClient.get().uri("/blogposts/"+expected.get(0).getId())
