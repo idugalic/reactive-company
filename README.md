@@ -62,6 +62,9 @@ public class BlogPostController {
 	}
 }
 ```
+##### Functional
+
+Functional programming model is not implemented within this application. I am not sure if it is posible to have both models in one application.
 
 Both programming models are executed on the same reactive foundation that adapts non-blocking HTTP runtimes to the Reactive Streams API.
 
