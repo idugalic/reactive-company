@@ -156,7 +156,7 @@ $ ./mvnw clean install
 $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build
 ```
 
-or to build and push images via maven (requires username and password of a docker repository):
+or build and push images to docker hub via maven (requires username and password of a docker repository):
 
 ```bash
 $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
@@ -165,6 +165,7 @@ $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
 ### Run the application by Docker:
 
 ```bash
+$ cd reactive-company
 $ ./docker-swarm.sh
 ```
 
