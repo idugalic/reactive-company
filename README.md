@@ -145,7 +145,7 @@ $ ./mvnw spring-boot:run
 Build Docker images (optional):
 
 ```bash
-DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build
+$ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build
 ```
 
 or to build and push images via maven (requires username and password of a docker repository):
