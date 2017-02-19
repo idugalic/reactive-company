@@ -161,7 +161,7 @@ $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
 $ ./docker-swarm.sh
 ```
 
-Browse the application:
+### Browse the application:
 
 Blog posts:
 ```bash
