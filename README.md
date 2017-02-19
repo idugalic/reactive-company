@@ -135,7 +135,7 @@ $ brew install mongodb
 $ mongod
 ```
 
-Run the application by maven:
+### Run the application by maven:
 
 ```bash
 $ cd reactive-company
@@ -154,7 +154,7 @@ or to build and push images via maven (requires username and password of a docke
 $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
 ```
 
-Run the application by Docker:
+### Run the application by Docker:
 
 ```bash
 $ ./docker-swarm.sh
