@@ -183,6 +183,7 @@ http://localhost:8080/projects
 
 ## References
 
+- https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
 - http://www.reactivemanifesto.org/
 - http://docs.spring.io/spring-framework/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html
 - https://spring.io/blog/2016/04/19/understanding-reactive-types
