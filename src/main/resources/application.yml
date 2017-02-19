@@ -1,0 +1,11 @@
+server:
+  port: ${PORT:8080}
+
+
+---
+spring:
+  profiles: docker
+  data:
+    mongodb:
+      uri: mongodb://mongodb:27017/reactivecompany
+

@@ -135,13 +135,42 @@ $ brew install mongodb
 $ mongod
 ```
 
-Run it:
+Run the application by maven:
 
 ```bash
 $ cd reactive-company
 $ ./mvnw spring-boot:run
 ```
 
+Build Docker images (optional):
+
+```bash
+DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build
+```
+
+or to build and push images via maven (requires username and password of a docker repository):
+
+```bash
+$ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
+```
+
+Run the application by Docker:
+
+```bash
+$ ./docker-swarm.sh
+```
+
+Browse the application:
+
+Blog posts:
+```bash
+http://localhost:8080/blogposts
+```
+
+Projects:
+```bash
+http://localhost:8080/projects
+```
 
 ## References
 
