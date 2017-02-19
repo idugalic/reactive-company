@@ -8,9 +8,13 @@ This project is intended to demonstrate best practices for building a reactive w
       * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
          * [Server side](#server-side)
             * [Annotation based](#annotation-based)
+            * [Functional](#functional)
          * [Client side](#client-side)
       * [Spring Reactive data](#spring-reactive-data)
    * [Running instructions](#running-instructions)
+      * [Run the application by maven:](#run-the-application-by-maven)
+      * [Run the application by Docker:](#run-the-application-by-docker)
+      * [Browse the application:](#browse-the-application)
    * [References](#references)
 
 ## Reactive programming
