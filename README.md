@@ -5,6 +5,7 @@ This project is intended to demonstrate best practices for building a reactive w
 ## Table of Contents
 
    * [Reactive programming](#reactive-programming)
+      * [Why now?](#why-now)
       * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
          * [Server side](#server-side)
             * [Annotation based](#annotation-based)
