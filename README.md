@@ -121,6 +121,8 @@ public class ApplicationWebClientIntegrationTest {
 }
 
 ```
+Please note that webClient is requesting [Server-Sent Events](https://community.oracle.com/docs/DOC-982924) (text/event-stream).
+We could stream individual JSON objects (application/stream+json) but that would not be a valid JSON document as a whole and a browser client has no way to consume a stream other than using Server-Sent Events or WebSocket.
 
 ### Spring Reactive data
 
