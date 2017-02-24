@@ -85,39 +85,66 @@ WebFlux includes a functional, reactive WebClient that offers a fully non-blocki
 ```java
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ApplicationWebClientIntegrationTest {
+public class ApplicationIntegrationTest {
 
-	private WebClient webClient;
+	WebTestClient webTestClient;
 	
-	@LocalServerPort
-    private Integer port;
+	List<BlogPost> expectedBlogPosts;
+	List<Project> expectedProjects;
 	
 	@Autowired
 	BlogPostRepository blogPostRepository;
 	
-    List<BlogPost> expected;
+	@Autowired
+	ProjectRepository projectRepository;
 	
 	@Before
-    public void setup() {
-		webClient = WebClient.create("http://localhost:"+port);
-		expected = blogPostRepository.findAll().collectList().block();
-    }
+	public void setup() {
+		webTestClient = WebTestClient.bindToController(new BlogPostController(blogPostRepository), new ProjectController(projectRepository)).build();
+		
+		expectedBlogPosts = blogPostRepository.findAll().collectList().block();
+		expectedProjects = projectRepository.findAll().collectList().block();
+
+	}
+
+	@Test
+	public void listAllBlogPostsIntegrationTest() {
+		this.webTestClient.get().uri("/blogposts")
+			.exchange()
+			.expectStatus().isOk()
+			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+			.expectBody(BlogPost.class).list().isEqualTo(expectedBlogPosts);
+	}
 	
 	@Test
-	public void streamBlogPostsIntegrationTest() throws Exception {
-		Flux<BlogPost> result = this.webClient.get()
+	public void listAllProjectsIntegrationTest() {
+		this.webTestClient.get().uri("/projects")
+			.exchange()
+			.expectStatus().isOk()
+			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+			.expectBody(Project.class).list().isEqualTo(expectedProjects);
+	}
+	
+	@Test
+	public void streamAllBlogPostsIntegrationTest() throws Exception {
+		FluxExchangeResult<BlogPost> result = this.webTestClient.get()
 			.uri("/blogposts")
 			.accept(TEXT_EVENT_STREAM)
 			.exchange()
-			.flatMap(bp->bp.bodyToFlux(BlogPost.class));
+			.expectStatus().isOk()
+			.expectHeader().contentType(TEXT_EVENT_STREAM)
+			.expectBody(BlogPost.class)
+			.returnResult();
 
-		StepVerifier.create(result)
-			.expectNext(expected.get(0), expected.get(1))
+		StepVerifier.create(result.getResponseBody())
+			.expectNext(expectedBlogPosts.get(0), expectedBlogPosts.get(1))
 			.expectNextCount(1)
 			.consumeNextWith(blogPost -> assertThat(blogPost.getAuthorId(), endsWith("4")))
 			.thenCancel()
 			.verify();
 	}
+	
+	...
 }
 
 ```
