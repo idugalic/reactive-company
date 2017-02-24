@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.reactive.server.ExchangeResult;
+import org.springframework.test.web.reactive.server.FluxExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.idugalic.domain.blog.BlogPost;
@@ -25,7 +25,6 @@ import com.idugalic.domain.project.ProjectRepository;
 import com.idugalic.web.blog.BlogPostController;
 import com.idugalic.web.project.ProjectController;
 
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -59,7 +58,7 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.get().uri("/blogposts")
 			.exchange()
 			.expectStatus().isOk()
-			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 			.expectBody(BlogPost.class).list().isEqualTo(expectedBlogPosts);
 	}
 	
@@ -68,18 +67,18 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.get().uri("/projects")
 			.exchange()
 			.expectStatus().isOk()
-			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 			.expectBody(Project.class).list().isEqualTo(expectedProjects);
 	}
 	
 	@Test
 	public void streamAllBlogPostsIntegrationTest() throws Exception {
-		ExchangeResult<Flux<BlogPost>> result = this.webTestClient.get()
+		FluxExchangeResult<BlogPost> result = this.webTestClient.get()
 			.uri("/blogposts")
 			.accept(TEXT_EVENT_STREAM)
 			.exchange()
 			.expectStatus().isOk()
-			.expectHeader().contentTypeEquals(TEXT_EVENT_STREAM)
+			.expectHeader().contentType(TEXT_EVENT_STREAM)
 			.expectBody(BlogPost.class)
 			.returnResult();
 
@@ -93,12 +92,12 @@ public class ApplicationIntegrationTest {
 	
 	@Test
 	public void streamAllProjectsIntegrationTest() throws Exception {
-		ExchangeResult<Flux<Project>> result = this.webTestClient.get()
+		FluxExchangeResult<Project> result = this.webTestClient.get()
 			.uri("/projects")
 			.accept(TEXT_EVENT_STREAM)
 			.exchange()
 			.expectStatus().isOk()
-			.expectHeader().contentTypeEquals(TEXT_EVENT_STREAM)
+			.expectHeader().contentType(TEXT_EVENT_STREAM)
 			.expectBody(Project.class)
 			.returnResult();
 
@@ -115,7 +114,7 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.get().uri("/blogposts/search/bytitle?title=title1")
 			.exchange()
 			.expectStatus().isOk()
-			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 			.expectBody(BlogPost.class).list().isEqualTo(expectedBlogPosts.stream().filter(bp->bp.getTitle().equals("title1")).collect(Collectors.toList()));
 	}
 	
@@ -124,7 +123,7 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.get().uri("/projects/search/byname?name=name1")
 			.exchange()
 			.expectStatus().isOk()
-			.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 			.expectBody(Project.class).list().isEqualTo(expectedProjects.stream().filter(bp->bp.getName().equals("name1")).collect(Collectors.toList()));
 	}
 	
@@ -133,7 +132,7 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.get().uri("/blogposts/"+expectedBlogPosts.get(0).getId())
 				.exchange()
 				.expectStatus().isOk()
-				.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 				.expectBody(BlogPost.class).value().isEqualTo(expectedBlogPosts.get(0));
 	}
 	
@@ -142,7 +141,7 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.get().uri("/projects/"+expectedProjects.get(0).getId())
 				.exchange()
 				.expectStatus().isOk()
-				.expectHeader().contentTypeEquals(MediaType.APPLICATION_JSON_UTF8)
+				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 				.expectBody(Project.class).value().isEqualTo(expectedProjects.get(0));
 	}
 	
