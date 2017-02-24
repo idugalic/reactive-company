@@ -5,6 +5,7 @@ This project is intended to demonstrate best practices for building a reactive w
 ## Table of Contents
 
    * [Reactive programming](#reactive-programming)
+      * [Why now?](#why-now)
       * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
          * [Server side](#server-side)
             * [Annotation based](#annotation-based)
@@ -28,6 +29,11 @@ Reactive programming also leads to a major shift from imperative to declarative 
 For a longer introduction check the blog series [“Notes on Reactive Programming”](https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape) by Dave Syer.
 
 Read the ['Reactive Manifesto'](http://www.reactivemanifesto.org/).
+
+### Why now?
+
+What is driving the rise of Reactive in Enterprise Java? Well, it’s not (all) just a technology fad — people jumping on the bandwagon with the shiny new toys. The driver is efficient resource utilization, or in other words, spending less money on servers and data centres. The promise of Reactive is that you can do more with less, specifically you can process higher loads with fewer threads. This is where the intersection of Reactive and non-blocking, asynchronous I/O comes to the foreground. For the right problem, the effects are dramatic. For the wrong problem, the effects might go into reverse (you actually make things worse). Also remember, even if you pick the right problem, there is no such thing as a free lunch, and Reactive doesn’t solve the problems for you, it just gives you a toolbox that you can use to implement solutions.
+
 
 ### Spring WebFlux (web reactive) module
 
@@ -115,6 +121,8 @@ public class ApplicationWebClientIntegrationTest {
 }
 
 ```
+Please note that webClient is requesting [Server-Sent Events](https://community.oracle.com/docs/DOC-982924) (text/event-stream).
+We could stream individual JSON objects (application/stream+json) but that would not be a valid JSON document as a whole and a browser client has no way to consume a stream other than using Server-Sent Events or WebSocket.
 
 ### Spring Reactive data
 
@@ -190,6 +198,7 @@ http://localhost:8080/projects
 - https://spring.io/blog/2016/11/28/going-reactive-with-spring-data
 - https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1
 - http://www.ducons.com/blog/tests-and-thoughts-on-asynchronous-io-vs-multithreading
+- https://community.oracle.com/docs/DOC-982924
 
 
 
