@@ -1,4 +1,4 @@
-# reactive-company
+## [projects](http://idugalic.github.io/projects)/reactive-company
 
 This project is intended to demonstrate best practices for building a reactive web application with Spring platform.
 
