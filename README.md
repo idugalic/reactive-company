@@ -197,7 +197,14 @@ or build and push images to docker hub via maven (requires username and password
 $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
 ```
 
-### Run the application by Docker:
+### Run the application by Docker 
+
+I am running Docker Community Edition, version: 17.03.0-ce (experimental).
+
+A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines, or nodes, where you deploy services. The Docker Engine CLI and API include commands to manage swarm nodes (e.g., add or remove nodes), and deploy and orchestrate services across the swarm. By running script bellow you will initialize a simple swarm with one node and install services:
+
+- reactive-company
+- mongodb (mongo:3.0.4)
 
 ```bash
 $ cd reactive-company
