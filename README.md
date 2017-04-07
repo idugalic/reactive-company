@@ -211,6 +211,38 @@ $ cd reactive-company
 $ ./docker-swarm.sh
 ```
 
+#### Visualize docker swarm
+By adding 'manomarks/visualizer' service you can visualize your docker swarm:
+
+```bash
+$ docker service create \
+  --name=viz \
+  --publish=5000:8080/tcp \
+  --constraint=node.role==manager \
+  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  manomarks/visualizer
+```
+Visit http://localhost:5000
+
+#### List docker services
+
+```bash
+$ docker service ls
+```
+#### Browse docker service logs
+
+```bash
+$ docker service logs stack_reactive-company -f
+```
+
+#### Scale docker services
+
+$ docker service scale SERVICE=REPLICAS
+
+```bash
+$ docker service scale stack_reactive-company=2
+```
+
 ### Browse the application:
 
 Blog posts:
