@@ -148,7 +148,8 @@ public class ApplicationIntegrationTest {
 	@Test
 	public void postBlogPostIntegrationTest() throws Exception {
 		this.webTestClient.post().uri("/blogposts")
-				.exchange(Mono.just(new BlogPost("authorId5", "title5", "content5", "tagString5")), BlogPost.class)
+		        .body(Mono.just(new BlogPost("authorId5", "title5", "content5", "tagString5")), BlogPost.class)
+				.exchange()
 				.expectStatus().isOk()
 				.expectBody().isEmpty();
 	}
@@ -156,7 +157,8 @@ public class ApplicationIntegrationTest {
 	@Test
 	public void postProjectIntegrationTest() throws Exception {
 		this.webTestClient.post().uri("/projects")
-				.exchange(Mono.just(new Project("name5", "repoUrl5", "siteUrl5", "category5", "description5")), Project.class)
+				.body(Mono.just(new Project("name5", "repoUrl5", "siteUrl5", "category5", "description5")), Project.class)
+				.exchange()
 				.expectStatus().isOk()
 				.expectBody().isEmpty();
 	}
