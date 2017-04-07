@@ -249,10 +249,10 @@ When using HTTP/1.1, by default, the TCP connections are left open for reuse. Do
 You can use 'curl' command line tool (NOT BROWSER) to avoid this problem ;) and consider using more serious load balancer in production.
 The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many applications require additional features, like these, to name just a few:
 
--- SSL/TLS termination
--- Content‑based routing (based, for example, on the URL or a header)
--- Access control and authorization
--- Rewrites and redirects
+- SSL/TLS termination
+- Content‑based routing (based, for example, on the URL or a header)
+- Access control and authorization
+- Rewrites and redirects
 
 ### Browse the application:
 
