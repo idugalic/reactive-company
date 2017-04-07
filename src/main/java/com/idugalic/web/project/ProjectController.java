@@ -1,6 +1,8 @@
 package com.idugalic.web.project;
 
 import org.reactivestreams.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idugalic.domain.project.Project;
 import com.idugalic.domain.project.ProjectRepository;
+import com.idugalic.web.blog.BlogPostController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -29,6 +32,8 @@ import reactor.core.publisher.Mono;
  */
 @RestController
 public class ProjectController {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ProjectController.class);
 
 	private final ProjectRepository projectRepository;
 
@@ -38,21 +43,25 @@ public class ProjectController {
 
 	@PostMapping("/projects")
 	Mono<Void> create(@RequestBody Publisher<Project> projectStream) {
+		LOG.info("Project - Create");
 		return this.projectRepository.save(projectStream).then();
 	}
 	
 	@GetMapping("/projects")
 	Flux<Project> list() {
+		LOG.info("Project - List");
 		return this.projectRepository.findAll();
 	}
 	
 	@GetMapping("/projects/{id}")
 	Mono<Project> findById(@PathVariable String id) {
+		LOG.info("Project - FindById");
 		return this.projectRepository.findOne(id);
 	}
 	
 	@GetMapping("/projects/search/byname")
 	Flux<Project> findByName(@RequestParam String name) {
+		LOG.info("Project - FindByName");
 		return this.projectRepository.findByName(Mono.just(name));
 	}
 	
