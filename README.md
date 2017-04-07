@@ -1,4 +1,4 @@
-# [projects](http://idugalic.github.io/projects)/reactive-company
+# [projects](http://idugalic.github.io/projects)/reactive-company [![Build Status](https://travis-ci.org/idugalic/reactive-company.svg?branch=master)](https://travis-ci.org/idugalic/reactive-company)
 
 This project is intended to demonstrate best practices for building a reactive web application with Spring platform.
 
