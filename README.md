@@ -242,6 +242,17 @@ $ docker service scale SERVICE=REPLICAS
 ```bash
 $ docker service scale stack_reactive-company=2
 ```
+#### Swarm mode load balancer - note
+
+When using HTTP/1.1, by default, the TCP connections are left open for reuse. Docker swarm load balancer will not work as expected in this case. You will get routed to the same task of the service every time. 
+
+You can use 'curl' command line tool (NOT BROWSER) to avoid this problem ;) and consider using more serious load balancer in production.
+The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many applications require additional features, like these, to name just a few:
+
+-- SSL/TLS termination
+-- Content‑based routing (based, for example, on the URL or a header)
+-- Access control and authorization
+-- Rewrites and redirects
 
 ### Browse the application:
 
