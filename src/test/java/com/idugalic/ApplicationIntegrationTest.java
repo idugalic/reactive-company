@@ -159,8 +159,7 @@ public class ApplicationIntegrationTest {
 		this.webTestClient.post().uri("/projects")
 				.body(Mono.just(new Project("name5", "repoUrl5", "siteUrl5", "category5", "description5")), Project.class)
 				.exchange()
-				.expectStatus().isOk()
-				.expectBody().isEmpty();
+				.expectStatus().isOk().expectBody().isEmpty();
 	}
 
 }

@@ -26,19 +26,17 @@ public class ReactiveComapnyApplication {
 	@Bean
 	CommandLineRunner initData(BlogPostRepository blogPostRepository, ProjectRepository projectRepository) {
 		return (p) -> {
-
 			blogPostRepository.deleteAll().block();
 			blogPostRepository.save(new BlogPost("authorId1", "title1", "content1", "tagString1")).block();
 			blogPostRepository.save(new BlogPost("authorId2", "title2", "content2", "tagString2")).block();
 			blogPostRepository.save(new BlogPost("authorId3", "title3", "content3", "tagString3")).block();
 			blogPostRepository.save(new BlogPost("authorId4", "title4", "content4", "tagString4")).block();
-			
+
 			projectRepository.deleteAll().block();
 			projectRepository.save(new Project("name1", "repoUrl1", "siteUrl1", "category1", "description1")).block();
 			projectRepository.save(new Project("name2", "repoUrl2", "siteUrl2", "category2", "description2")).block();
 			projectRepository.save(new Project("name3", "repoUrl3", "siteUrl3", "category3", "description3")).block();
 			projectRepository.save(new Project("name4", "repoUrl4", "siteUrl4", "category4", "description4")).block();
-
 		};
 	}
 }

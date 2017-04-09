@@ -12,32 +12,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @SuppressWarnings("serial")
 public abstract class BaseAuditableEntity extends BaseEntity {
 
-    @CreatedBy
-    private String createdBy;
-    
-    @CreatedDate
-    private Date createdTime;
-    
-    @LastModifiedBy
-    private String lastModifiedBy;
-    
-    @LastModifiedDate
-    private Date lastModifiedTime;
+	@CreatedBy
+	private String createdBy;
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
+	@CreatedDate
+	private Date createdTime;
 
-    public Date getCreatedTime() {
-        return createdTime;
-    }
+	@LastModifiedBy
+	private String lastModifiedBy;
 
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
+	@LastModifiedDate
+	private Date lastModifiedTime;
 
-    public Date getLastModifiedTime() {
-        return lastModifiedTime;
-    }
-    
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return createdTime;
+	}
+
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	public Date getLastModifiedTime() {
+		return lastModifiedTime;
+	}
+
 }

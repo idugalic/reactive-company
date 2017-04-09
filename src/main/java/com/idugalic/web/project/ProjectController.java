@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idugalic.domain.project.Project;
 import com.idugalic.domain.project.ProjectRepository;
-import com.idugalic.web.blog.BlogPostController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -64,7 +63,4 @@ public class ProjectController {
 		LOG.info("Project - FindByName");
 		return this.projectRepository.findByName(Mono.just(name));
 	}
-	
-	
-
 }

@@ -10,65 +10,64 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @SuppressWarnings("serial")
 @Document(collection = "BlogPost")
 public class BlogPost extends AbstractPost {
-    
-    private String title; 
 
-    private boolean published;
-    
-    @Indexed
-    private Date publishedTime;
+	private String title;
 
-    private List<String> tags = new ArrayList<String>();
+	private boolean published;
 
-    public String getTitle() {
-        return title;
-    }
+	@Indexed
+	private Date publishedTime;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	private List<String> tags = new ArrayList<String>();
 
-    public boolean isPublished() {
-        return published;
-    }
-    
-    public void setPublished(boolean published){
-        this.published = published;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public Date getPublishedTime() {
-        return publishedTime;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setPublishedTime(Date publishedTime) {
-        this.publishedTime = publishedTime;
-    }
+	public boolean isPublished() {
+		return published;
+	}
 
-    public List<String> getTags() {
-        return tags;
-    }
+	public void setPublished(boolean published) {
+		this.published = published;
+	}
 
-    public BlogPost() {
-    }
-    
-    public BlogPost(String authorId, String title, String content, String tagString) {
-        super(authorId, content);
-        this.title = title;
-        parseAndSetTags(tagString);
-    }
+	public Date getPublishedTime() {
+		return publishedTime;
+	}
 
-    public void parseAndSetTags(String tagString) {
-        tags.clear();
-        for (String tag : tagString.split(",")) {
-            String newTag = tag.trim();
-            if (newTag.length() > 0) {
-                tags.add(newTag);
-            }
-        }
-    }
+	public void setPublishedTime(Date publishedTime) {
+		this.publishedTime = publishedTime;
+	}
 
-    public String toString() {
-        return String.format("BlogPost {title='%s'}", getTitle());
-    }
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public BlogPost() {
+	}
+
+	public BlogPost(String authorId, String title, String content, String tagString) {
+		super(authorId, content);
+		this.title = title;
+		parseAndSetTags(tagString);
+	}
+
+	public void parseAndSetTags(String tagString) {
+		tags.clear();
+		for (String tag : tagString.split(",")) {
+			String newTag = tag.trim();
+			if (newTag.length() > 0) {
+				tags.add(newTag);
+			}
+		}
+	}
+
+	public String toString() {
+		return String.format("BlogPost {title='%s'}", getTitle());
+	}
 }
-
