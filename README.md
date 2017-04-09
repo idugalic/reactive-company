@@ -255,6 +255,15 @@ Projects:
 http://localhost:8080/projects
 ```
 
+##  Load testing with Gatling
+
+```bash
+$ mvn gatling:execute
+```
+
+By default src/main/test/scala/com/idugalic/RecordedSimulation.scala will be run.
+The reports will be available in the console and in *html files within the 'target/gatling/results' folder
+
 ## References
 
 - https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
@@ -265,6 +274,7 @@ http://localhost:8080/projects
 - https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1
 - http://www.ducons.com/blog/tests-and-thoughts-on-asynchronous-io-vs-multithreading
 - https://community.oracle.com/docs/DOC-982924
+- https://www.ivankrizsan.se/2016/05/06/introduction-to-load-testing-with-gatling-part-4/
 
 
 

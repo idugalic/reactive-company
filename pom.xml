@@ -25,6 +25,8 @@
 		<mongodb-driver-reactivestreams.version>1.2.0</mongodb-driver-reactivestreams.version>
 		<docker.image.prefix>idugalic</docker.image.prefix>
 		<docker.plugin.version>0.4.9</docker.plugin.version>
+		<gatling.version>2.1.7</gatling.version>
+		<gatling-plugin.version>2.1.7</gatling-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -51,6 +53,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		 <!--
+            Test dependencies.
+            For Gatling load simulations, we only need this single dependency.
+        -->
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -81,6 +93,15 @@
 					</resources>
 				</configuration>
 			</plugin>
+			 <!-- Gatling Maven plugin that runs a load simulation. -->
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-plugin.version}</version>
+                <configuration>
+                    <simulationClass>com.idugalic.RecordedSimulation</simulationClass>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
