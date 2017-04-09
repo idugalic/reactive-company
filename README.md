@@ -14,8 +14,14 @@ This project is intended to demonstrate best practices for building a reactive w
       * [Spring Reactive data](#spring-reactive-data)
    * [Running instructions](#running-instructions)
       * [Run the application by maven:](#run-the-application-by-maven)
-      * [Run the application by Docker:](#run-the-application-by-docker)
+      * [Run the application by Docker](#run-the-application-by-docker)
+         * [Visualize docker swarm](#visualize-docker-swarm)
+         * [List docker services](#list-docker-services)
+         * [Scale docker services](#scale-docker-services)
+         * [Browse docker service logs](#browse-docker-service-logs)
+         * [Swarm mode load balancer](#swarm-mode-load-balancer)
       * [Browse the application:](#browse-the-application)
+   * [Load testing with Gatling](#load-testing-with-gatling)
    * [References](#references)
 
 ## Reactive programming
