@@ -1,5 +1,5 @@
 # [projects](http://idugalic.github.io/projects)/reactive-company [![Build Status](https://travis-ci.org/idugalic/reactive-company.svg?branch=master)](https://travis-ci.org/idugalic/reactive-company)
-
+<a href="http://www.reactivemanifesto.org/"> <img style="border: 0; position: fixed; left: 0; top:0; z-index: 9000" src="//d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-left.png"> </a>
 This project is intended to demonstrate best practices for building a reactive web application with Spring platform.
 
 ## Table of Contents
