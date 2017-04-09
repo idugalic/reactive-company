@@ -229,30 +229,46 @@ Visit http://localhost:5000
 ```bash
 $ docker service ls
 ```
+
+#### Scale docker services
+
+```bash
+$ docker service scale stack_reactive-company=2
+```
+Now you have two tasks/containers runing for this service.
+
 #### Browse docker service logs
 
 ```bash
 $ docker service logs stack_reactive-company -f
 ```
+You will be able to determine what task/container handled the request.
 
-#### Scale docker services
+#### Swarm mode load balancer
 
-$ docker service scale SERVICE=REPLICAS
+When using HTTP/1.1, by default, the TCP connections are left open for reuse. Docker swarm load balancer will not work as expected in this case. You will get routed to the same task of the service every time. 
 
-```bash
-$ docker service scale stack_reactive-company=2
-```
+You can use 'curl' command line tool (NOT BROWSER) to avoid this problem ;) and consider using more serious load balancer in production.
+The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many applications require additional features, like these, to name just a few:
+
+- SSL/TLS termination
+- Content‑based routing (based, for example, on the URL or a header)
+- Access control and authorization
+- Rewrites and redirects
+
+It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick one.
 
 ### Browse the application:
 
 Blog posts:
 ```bash
-http://localhost:8080/blogposts
+$ curl http://localhost:8080/blogposts
 ```
+
 
 Projects:
 ```bash
-http://localhost:8080/projects
+$ curl http://localhost:8080/projects
 ```
 
 ##  Load testing with Gatling
