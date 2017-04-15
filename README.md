@@ -291,6 +291,7 @@ The reports will be available in the console and in *html files within the 'targ
 - https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
 - http://www.reactivemanifesto.org/
 - http://docs.spring.io/spring-framework/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html
+- https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code
 - https://spring.io/blog/2016/04/19/understanding-reactive-types
 - https://spring.io/blog/2016/11/28/going-reactive-with-spring-data
 - https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1
