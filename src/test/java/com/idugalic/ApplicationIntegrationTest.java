@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.FluxExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
@@ -59,7 +60,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-			.expectBody(BlogPost.class).list().isEqualTo(expectedBlogPosts);
+			.expectBodyList(BlogPost.class).isEqualTo(expectedBlogPosts);
 	}
 	
 	@Test
@@ -68,7 +69,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-			.expectBody(Project.class).list().isEqualTo(expectedProjects);
+			.expectBodyList(Project.class).isEqualTo(expectedProjects);
 	}
 	
 	@Test
@@ -79,8 +80,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(TEXT_EVENT_STREAM)
-			.expectBody(BlogPost.class)
-			.returnResult();
+			.returnResult(BlogPost.class);
 
 		StepVerifier.create(result.getResponseBody())
 			.expectNext(expectedBlogPosts.get(0), expectedBlogPosts.get(1))
@@ -98,8 +98,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(TEXT_EVENT_STREAM)
-			.expectBody(Project.class)
-			.returnResult();
+			.returnResult(Project.class);
 
 		StepVerifier.create(result.getResponseBody())
 			.expectNext(expectedProjects.get(0), expectedProjects.get(1))
@@ -115,7 +114,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-			.expectBody(BlogPost.class).list().isEqualTo(expectedBlogPosts.stream().filter(bp->bp.getTitle().equals("title1")).collect(Collectors.toList()));
+			.expectBodyList(BlogPost.class).isEqualTo(expectedBlogPosts.stream().filter(bp->bp.getTitle().equals("title1")).collect(Collectors.toList()));
 	}
 	
 	@Test
@@ -124,7 +123,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-			.expectBody(Project.class).list().isEqualTo(expectedProjects.stream().filter(bp->bp.getName().equals("name1")).collect(Collectors.toList()));
+			.expectBodyList(Project.class).isEqualTo(expectedProjects.stream().filter(bp->bp.getName().equals("name1")).collect(Collectors.toList()));
 	}
 	
 	@Test
@@ -133,7 +132,7 @@ public class ApplicationIntegrationTest {
 				.exchange()
 				.expectStatus().isOk()
 				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-				.expectBody(BlogPost.class).value().isEqualTo(expectedBlogPosts.get(0));
+				.expectBody(BlogPost.class).isEqualTo(expectedBlogPosts.get(0));
 	}
 	
 	@Test
@@ -142,7 +141,7 @@ public class ApplicationIntegrationTest {
 				.exchange()
 				.expectStatus().isOk()
 				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-				.expectBody(Project.class).value().isEqualTo(expectedProjects.get(0));
+				.expectBody(Project.class).isEqualTo(expectedProjects.get(0));
 	}
 	
 	@Test
