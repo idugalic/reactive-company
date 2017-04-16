@@ -44,25 +44,41 @@ public class BlogPostController {
 
 	@PostMapping("/blogposts")
 	Mono<Void> create(@RequestBody Publisher<BlogPost> blogPostStream) {
-		LOG.info("BlogPost - Create");
-		return this.blogPostRepository.save(blogPostStream).then();
+		LOG.info("Received request: BlogPost - Create");
+		try {
+			return this.blogPostRepository.save(blogPostStream).then().log();
+		} finally {
+			LOG.info("Request pocessed: BlogPost - Create");
+		}
 	}
 
 	@GetMapping("/blogposts")
 	Flux<BlogPost> list() {
-		LOG.info("BlogPost - List");
-		return this.blogPostRepository.findAll();
+		LOG.info("Received request: BlogPost - List");
+		try {
+			return this.blogPostRepository.findAll().log();
+		} finally {
+			LOG.info("Request pocessed: BlogPost - List");
+		}
 	}
 
 	@GetMapping("/blogposts/{id}")
 	Mono<BlogPost> findById(@PathVariable String id) {
-		LOG.info("BlogPost - FindById");
-		return this.blogPostRepository.findOne(id);
+		LOG.info("Received request: BlogPost - FindById");
+		try {
+			return this.blogPostRepository.findOne(id).log();
+		} finally {
+			LOG.info("Request pocessed: BlogPost - FindById");
+		}
 	}
 
 	@GetMapping("/blogposts/search/bytitle")
 	Flux<BlogPost> findByTitle(@RequestParam String title) {
-		LOG.info("BlogPost - FindByTitle");
-		return this.blogPostRepository.findByTitle(Mono.just(title));
+		LOG.info("Received request: BlogPost - FindByTitle");
+		try {
+			return this.blogPostRepository.findByTitle(Mono.just(title)).log();
+		} finally {
+			LOG.info("Request pocessed: BlogPost - FindByTitle");
+		}
 	}
 }
