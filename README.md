@@ -4,7 +4,7 @@ This project is intended to demonstrate best practices for building a reactive w
 
 ## Table of Contents
 
-   * [Reactive programming](#reactive-programming)
+   * [Reactive programming and design](#reactive-programming)
       * [Why now?](#why-now)
       * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
          * [Server side](#server-side)
@@ -25,7 +25,7 @@ This project is intended to demonstrate best practices for building a reactive w
    * [Log output](#log-output)
    * [References](#references)
 
-## Reactive programming
+## Reactive programming and design
 
 In plain terms reactive programming is about [non-blocking](http://www.reactivemanifesto.org/glossary#Non-Blocking) applications that are [asynchronous](http://www.reactivemanifesto.org/glossary#Asynchronous) and [message-driven](http://www.reactivemanifesto.org/glossary#Message-Driven) and require a small number of threads to [scale](http://www.reactivemanifesto.org/glossary#Scalability) vertically (i.e. within the JVM) rather than horizontally (i.e. through clustering).
 
@@ -35,7 +35,7 @@ Reactive programming also leads to a major shift from imperative to declarative 
 
 For a longer introduction check the blog series [“Notes on Reactive Programming”](https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape) by Dave Syer.
 
-Read the ['Reactive Manifesto'](http://www.reactivemanifesto.org/).
+"We look at Reactive Programming as one of the methodologies or pieces of the puzzle for Reactive [Systems] as a broader term." Please read the ['Reactive Manifesto'](http://www.reactivemanifesto.org/).
 
 ### Why now?
 
