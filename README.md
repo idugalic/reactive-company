@@ -286,6 +286,27 @@ $ mvn gatling:execute
 By default src/main/test/scala/com/idugalic/RecordedSimulation.scala will be run.
 The reports will be available in the console and in *html files within the 'target/gatling/results' folder
 
+## Log output
+
+A possible log output we could see is:
+![Log - Reactive](log-reactive.png?raw=true)
+
+As we can see the output of the controller method is evaluated after its execution in a different thread too!
+
+```
+@GetMapping("/blogposts")
+Flux<BlogPost> list() {
+	LOG.info("Received request: BlogPost - List");
+	try {
+		return this.blogPostRepository.findAll().log();
+	} finally {
+		LOG.info("Request pocessed: BlogPost - List");
+	}
+}
+```
+
+We can no longer think in terms of a linear execution model where one request is handled by one thread. The reactive streams will be handled by a lot of threads in their lifecycle. This complicates things when we migrate from the old MVC framework. We no longer can rely on thread affinity for things like the security context or transaction handling.
+
 ## References
 
 - https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
