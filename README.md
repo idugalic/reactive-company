@@ -120,7 +120,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-			.expectBody(BlogPost.class).list().isEqualTo(expectedBlogPosts);
+			.expectBodyList(BlogPost.class).isEqualTo(expectedBlogPosts);
 	}
 	
 	@Test
@@ -129,7 +129,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
-			.expectBody(Project.class).list().isEqualTo(expectedProjects);
+			.expectBodyList(Project.class).isEqualTo(expectedProjects);
 	}
 	
 	@Test
@@ -140,8 +140,7 @@ public class ApplicationIntegrationTest {
 			.exchange()
 			.expectStatus().isOk()
 			.expectHeader().contentType(TEXT_EVENT_STREAM)
-			.expectBody(BlogPost.class)
-			.returnResult();
+			.returnResult(BlogPost.class);
 
 		StepVerifier.create(result.getResponseBody())
 			.expectNext(expectedBlogPosts.get(0), expectedBlogPosts.get(1))
@@ -294,7 +293,7 @@ A possible log output we could see is:
 
 As we can see the output of the controller method is evaluated after its execution in a different thread too!
 
-```
+```java
 @GetMapping("/blogposts")
 Flux<BlogPost> list() {
 	LOG.info("Received request: BlogPost - List");
