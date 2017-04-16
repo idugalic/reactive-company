@@ -309,8 +309,9 @@ We can no longer think in terms of a linear execution model where one request is
 
 ## References
 
-- https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
 - http://www.reactivemanifesto.org/
+- http://www.lightbend.com/blog/the-basics-of-reactive-system-design-for-traditional-java-enterprises
+- https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
 - http://docs.spring.io/spring-framework/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html
 - https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code
 - https://spring.io/blog/2016/04/19/understanding-reactive-types
