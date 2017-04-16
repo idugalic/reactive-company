@@ -22,6 +22,7 @@ This project is intended to demonstrate best practices for building a reactive w
          * [Swarm mode load balancer](#swarm-mode-load-balancer)
       * [Browse the application:](#browse-the-application)
    * [Load testing with Gatling](#load-testing-with-gatling)
+   * [Log output](#log-output)
    * [References](#references)
 
 ## Reactive programming
