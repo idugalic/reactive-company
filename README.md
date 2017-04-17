@@ -4,7 +4,7 @@ This project is intended to demonstrate best practices for building a reactive w
 
 ## Table of Contents
 
-   * [Reactive programming and design](#reactive-programming)
+   * [Reactive programming and Reactive systems](#reactive-programming)
       * [Why now?](#why-now)
       * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
          * [Server side](#server-side)
@@ -23,9 +23,9 @@ This project is intended to demonstrate best practices for building a reactive w
       * [Browse the application:](#browse-the-application)
    * [Load testing with Gatling](#load-testing-with-gatling)
    * [Log output](#log-output)
-   * [References](#references)
+   * [References and further reading](#references)
 
-## Reactive programming and design
+## Reactive programming and Reactive systems
 
 In plain terms reactive programming is about [non-blocking](http://www.reactivemanifesto.org/glossary#Non-Blocking) applications that are [asynchronous](http://www.reactivemanifesto.org/glossary#Asynchronous) and [message-driven](http://www.reactivemanifesto.org/glossary#Message-Driven) and require a small number of threads to [scale](http://www.reactivemanifesto.org/glossary#Scalability) vertically (i.e. within the JVM) rather than horizontally (i.e. through clustering).
 
@@ -35,7 +35,7 @@ Reactive programming also leads to a major shift from imperative to declarative 
 
 For a longer introduction check the blog series [“Notes on Reactive Programming”](https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape) by Dave Syer.
 
-"We look at Reactive Programming as one of the methodologies or pieces of the puzzle for Reactive [Systems] as a broader term." Please read the ['Reactive Manifesto'](http://www.reactivemanifesto.org/).
+"We look at Reactive Programming as one of the methodologies or pieces of the puzzle for Reactive [Systems] as a broader term." Please read the ['Reactive Manifesto'](http://www.reactivemanifesto.org/) and ['Reactive programming vs. Reactive systems'](https://www.oreilly.com/ideas/reactive-programming-vs-reactive-systems) for more informations.
 
 ### Why now?
 
@@ -307,22 +307,16 @@ Flux<BlogPost> list() {
 
 We can no longer think in terms of a linear execution model where one request is handled by one thread. The reactive streams will be handled by a lot of threads in their lifecycle. This complicates things when we migrate from the old MVC framework. We no longer can rely on thread affinity for things like the security context or transaction handling.
 
-## References
+## References and further reading 
 
 - http://www.reactivemanifesto.org/
 - https://www.oreilly.com/ideas/reactive-programming-vs-reactive-systems
 - http://www.lightbend.com/blog/the-basics-of-reactive-system-design-for-traditional-java-enterprises
-- https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc#.xcjlvcg7s
 - http://docs.spring.io/spring-framework/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html
+- https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape
 - https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code
-- https://spring.io/blog/2016/04/19/understanding-reactive-types
-- https://spring.io/blog/2016/11/28/going-reactive-with-spring-data
-- https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1
 - http://www.ducons.com/blog/tests-and-thoughts-on-asynchronous-io-vs-multithreading
-- https://community.oracle.com/docs/DOC-982924
 - https://www.ivankrizsan.se/2016/05/06/introduction-to-load-testing-with-gatling-part-4/
-- http://www.sparkbit.pl/spring-web-reactive-rest-controllers/
-- http://www.programmr.com/blogs/difference-between-asynchronous-and-non-blocking
 
 
 
