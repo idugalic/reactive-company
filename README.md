@@ -206,7 +206,7 @@ $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
 
 ### Run the application by Docker 
 
-I am running Docker Community Edition, version: 17.03.0-ce (experimental).
+I am running Docker Community Edition, version: 17.05.0-ce-rc1-mac8 (Channel: edge).
 
 A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines, or nodes, where you deploy services. The Docker Engine CLI and API include commands to manage swarm nodes (e.g., add or remove nodes), and deploy and orchestrate services across the swarm. By running script bellow you will initialize a simple swarm with one node, and you will install services:
 
@@ -218,33 +218,37 @@ $ cd reactive-company
 $ ./docker-swarm.sh
 ```
 
-#### Visualize docker swarm
-By adding 'manomarks/visualizer' service you can visualize your docker swarm:
+#### Manage docker swarm with Portainer
+
+Portainer is a simple management solution for Docker, and is really simple to deploy:
 
 ```bash
 $ docker service create \
-  --name=viz \
-  --publish=5000:8080/tcp \
-  --constraint=node.role==manager \
-  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
-  manomarks/visualizer
+    --name portainer \
+    --publish 9000:9000 \
+    --constraint 'node.role == manager' \
+    --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+    portainer/portainer \
+    -H unix:///var/run/docker.sock
 ```
-Visit http://localhost:5000
+Visit http://localhost:9000
 
-#### List docker services
+#### Manage docker swarm with CLI
+
+##### List docker services
 
 ```bash
 $ docker service ls
 ```
 
-#### Scale docker services
+##### Scale docker services
 
 ```bash
 $ docker service scale stack_reactive-company=2
 ```
 Now you have two tasks/containers runing for this service.
 
-#### Browse docker service logs
+##### Browse docker service logs
 
 ```bash
 $ docker service logs stack_reactive-company -f
