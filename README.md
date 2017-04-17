@@ -23,6 +23,7 @@ This project is intended to demonstrate best practices for building a reactive w
       * [Browse the application:](#browse-the-application)
    * [Load testing with Gatling](#load-testing-with-gatling)
    * [Log output](#log-output)
+   * [Circuit Breaker](#circuit-breaker)
    * [References and further reading](#references)
 
 ## Reactive programming and Reactive systems
@@ -307,6 +308,9 @@ Flux<BlogPost> list() {
 
 We can no longer think in terms of a linear execution model where one request is handled by one thread. The reactive streams will be handled by a lot of threads in their lifecycle. This complicates things when we migrate from the old MVC framework. We no longer can rely on thread affinity for things like the security context or transaction handling.
 
+## Circuit Breaker
+[Functional and Reactive Spring with Reactor and Netflix OSS](https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix)
+
 ## References and further reading 
 
 - http://www.reactivemanifesto.org/
@@ -317,6 +321,7 @@ We can no longer think in terms of a linear execution model where one request is
 - https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code
 - http://www.ducons.com/blog/tests-and-thoughts-on-asynchronous-io-vs-multithreading
 - https://www.ivankrizsan.se/2016/05/06/introduction-to-load-testing-with-gatling-part-4/
+- https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix
 
 
 
