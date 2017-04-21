@@ -328,6 +328,7 @@ We can no longer think in terms of a linear execution model where one request is
 - http://www.ducons.com/blog/tests-and-thoughts-on-asynchronous-io-vs-multithreading
 - https://www.ivankrizsan.se/2016/05/06/introduction-to-load-testing-with-gatling-part-4/
 - https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix
+- [asynchronous and non-blocking IO](http://blog.omega-prime.co.uk/?p=155)
 
 
 
