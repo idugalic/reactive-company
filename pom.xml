@@ -160,18 +160,18 @@
 	</pluginRepositories>
 
 	<distributionManagement>
-  <repository>
-    <id>packagecloud-travis</id>
-    <url>
-      packagecloud+https://packagecloud.io/idugalic/mycompany
-    </url>
-  </repository>
-  <snapshotRepository>
-    <id>packagecloud-travis</id>
-    <url>
-      packagecloud+https://packagecloud.io/idugalic/mycompany
-    </url>
-		<uniqueVersion>false</uniqueVersion>
-  </snapshotRepository>
-</distributionManagement>
+	  <repository>
+	    <id>packagecloud-travis</id>
+	    <url>
+	      packagecloud+https://packagecloud.io/idugalic/mycompany
+	    </url>
+	  </repository>
+	  <snapshotRepository>
+	    <id>packagecloud-travis</id>
+	    <url>
+	      packagecloud+https://packagecloud.io/idugalic/mycompany
+	    </url>
+			<uniqueVersion>false</uniqueVersion>
+	  </snapshotRepository>
+	</distributionManagement>
 </project>
