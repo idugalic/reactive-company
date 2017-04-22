@@ -12,6 +12,7 @@ This project is intended to demonstrate best practices for building a reactive w
              * [Functional](#functional)
           * [Client side](#client-side)
        * [Spring Reactive data](#spring-reactive-data)
+    * [CI with Travis](#ci-with-travis)
     * [Running instructions](#running-instructions)
        * [Run the application by maven:](#run-the-application-by-maven)
        * [Run the application by Docker](#run-the-application-by-docker)
