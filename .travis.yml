@@ -17,7 +17,7 @@ deploy:
     on:
       branch: master
   - provider: script
-    script: "mvn docker:build -DpushImage"
+    script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn docker:build -DpushImage"
     skip_cleanup: true
     on:
       branch: master
