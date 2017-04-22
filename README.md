@@ -3,7 +3,7 @@
 This project is intended to demonstrate best practices for building a reactive web application with Spring 5 platform.
 
 ## Table of Contents
-     
+
    * [Reactive programming and Reactive systems](#reactive-programming-and-reactive-systems)
        * [Why now?](#why-now)
        * [Spring WebFlux (web reactive) module](#spring-webflux-web-reactive-module)
@@ -70,12 +70,12 @@ public class BlogPostController {
 	Mono<Void> create(@RequestBody Publisher<BlogPost> blogPostStream) {
 		return this.blogPostRepository.save(blogPostStream).then();
 	}
-	
+
 	@GetMapping("/blogposts")
 	Flux<BlogPost> list() {
 		return this.blogPostRepository.findAll();
 	}
-	
+
 	@GetMapping("/blogposts/{id}")
 	Mono<BlogPost> findById(@PathVariable String id) {
 		return this.blogPostRepository.findOne(id);
@@ -98,20 +98,20 @@ WebFlux includes a functional, reactive WebClient that offers a fully non-blocki
 public class ApplicationIntegrationTest {
 
 	WebTestClient webTestClient;
-	
+
 	List<BlogPost> expectedBlogPosts;
 	List<Project> expectedProjects;
-	
+
 	@Autowired
 	BlogPostRepository blogPostRepository;
-	
+
 	@Autowired
 	ProjectRepository projectRepository;
-	
+
 	@Before
 	public void setup() {
 		webTestClient = WebTestClient.bindToController(new BlogPostController(blogPostRepository), new ProjectController(projectRepository)).build();
-		
+
 		expectedBlogPosts = blogPostRepository.findAll().collectList().block();
 		expectedProjects = projectRepository.findAll().collectList().block();
 
@@ -125,7 +125,7 @@ public class ApplicationIntegrationTest {
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 			.expectBodyList(BlogPost.class).isEqualTo(expectedBlogPosts);
 	}
-	
+
 	@Test
 	public void listAllProjectsIntegrationTest() {
 		this.webTestClient.get().uri("/projects")
@@ -134,7 +134,7 @@ public class ApplicationIntegrationTest {
 			.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 			.expectBodyList(Project.class).isEqualTo(expectedProjects);
 	}
-	
+
 	@Test
 	public void streamAllBlogPostsIntegrationTest() throws Exception {
 		FluxExchangeResult<BlogPost> result = this.webTestClient.get()
@@ -152,7 +152,7 @@ public class ApplicationIntegrationTest {
 			.thenCancel()
 			.verify();
 	}
-	
+
 	...
 }
 
@@ -162,7 +162,7 @@ We could stream individual JSON objects (application/stream+json) but that would
 
 ### Spring Reactive data
 
-Spring Data Kay M1 is the first release ever that comes with support for reactive data access. Its initial set of supported stores — MongoDB, Apache Cassandra and Redis 
+Spring Data Kay M1 is the first release ever that comes with support for reactive data access. Its initial set of supported stores — MongoDB, Apache Cassandra and Redis
 
 The repositories programming model is the most high-level abstraction Spring Data users usually deal with. They’re usually comprised of a set of CRUD methods defined in a Spring Data provided interface and domain-specific query methods.
 
@@ -170,15 +170,21 @@ In contrast to the traditional repository interfaces, a reactive repository uses
 
 ```java
 public interface BlogPostRepository extends ReactiveSortingRepository<BlogPost, String>{
-    
+
 	Flux<BlogPost> findByTitle(Mono<String> title);
 
 }
 ```
+## CI with Travis
+
+The application is built, tested and deployed by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push to master branch and on a daily basis.
+
+- Docker image is pushed to [Docker Hub](https://hub.docker.com/r/idugalic/reactive-company/)
+- Jar file (artifact) is pushed to [packagecloud.io](https://packagecloud.io/idugalic/mycompany/install#maven)
 
 ## Running instructions
 
-This application is using embedded mongo database for testing only. 
+This application is using embedded mongo database for testing only.
 You have to install and run mongo database before you run the application.
 
 ```bash
@@ -206,7 +212,7 @@ or build and push images to docker hub via maven (requires username and password
 $ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
 ```
 
-### Run the application by Docker 
+### Run the application by Docker
 
 I am running Docker Community Edition, version: 17.05.0-ce-rc1-mac8 (Channel: edge).
 
@@ -259,7 +265,7 @@ You will be able to determine what task/container handled the request.
 
 #### Swarm mode load balancer
 
-When using HTTP/1.1, by default, the TCP connections are left open for reuse. Docker swarm load balancer will not work as expected in this case. You will get routed to the same task of the service every time. 
+When using HTTP/1.1, by default, the TCP connections are left open for reuse. Docker swarm load balancer will not work as expected in this case. You will get routed to the same task of the service every time.
 
 You can use 'curl' command line tool (NOT BROWSER) to avoid this problem ;) and consider using more serious load balancer in production.
 The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many applications require additional features, like these, to name just a few:
@@ -317,7 +323,7 @@ We can no longer think in terms of a linear execution model where one request is
 ## Circuit Breaker
 [Functional and Reactive Spring with Reactor and Netflix OSS](https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix)
 
-## References and further reading 
+## References and further reading
 
 - http://www.reactivemanifesto.org/
 - https://www.oreilly.com/ideas/reactive-programming-vs-reactive-systems
@@ -329,7 +335,3 @@ We can no longer think in terms of a linear execution model where one request is
 - https://www.ivankrizsan.se/2016/05/06/introduction-to-load-testing-with-gatling-part-4/
 - https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix
 - [asynchronous and non-blocking IO](http://blog.omega-prime.co.uk/?p=155)
-
-
-
-
