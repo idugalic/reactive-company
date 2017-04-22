@@ -171,6 +171,7 @@
     <url>
       packagecloud+https://packagecloud.io/idugalic/mycompany
     </url>
+		<uniqueVersion>false</uniqueVersion>
   </snapshotRepository>
 </distributionManagement>
 </project>
