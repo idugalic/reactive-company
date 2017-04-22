@@ -66,6 +66,13 @@
 	</dependencies>
 
 	<build>
+                <extensions>
+    			<extension>
+     			 <groupId>io.packagecloud.maven.wagon</groupId>
+      			 <artifactId>maven-packagecloud-wagon</artifactId>
+      			 <version>0.0.4</version>
+    			</extension>
+  		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -106,7 +113,17 @@
 	</build>
 
 	<repositories>
-		<repository>
+   <repository>
+    <id>idugalic-mycompany</id>
+    <url>https://packagecloud.io/idugalic/mycompany/maven2</url>
+    <releases>
+      <enabled>true</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+   </repository>
+	 <repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
 			<url>https://repo.spring.io/snapshot</url>
@@ -141,4 +158,19 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<distributionManagement>
+  <repository>
+    <id>packagecloud-travis</id>
+    <url>
+      packagecloud+https://packagecloud.io/idugalic/mycompany
+    </url>
+  </repository>
+  <snapshotRepository>
+    <id>packagecloud-travis</id>
+    <url>
+      packagecloud+https://packagecloud.io/idugalic/mycompany
+    </url>
+  </snapshotRepository>
+</distributionManagement>
 </project>
