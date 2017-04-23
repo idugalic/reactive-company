@@ -17,7 +17,9 @@ is about non-blocking applications that are:
 
 +++
 
-### From imperative to declarative async composition of logic - service
+### Reactive Programming
+
+<span style="color:gray">From imperative to declarative async composition of logic - service</span>
 
 ```java
 @GetMapping("/blogposts")
@@ -33,7 +35,9 @@ Flux<BlogPost> list() {
 
 +++
 
-### From imperative to declarative async composition of logic - log
+### Reactive Programming
+
+<span style="color:gray">From imperative to declarative async composition of logic - log</span>
 
 A possible log output we could see is:
 ![Log - Reactive](assets/logs-reactive.png?raw=true)
@@ -42,7 +46,9 @@ As we can see the output of the controller method is evaluated after its executi
 
 +++
 
-### From imperative to declarative async composition of logic
+### Reactive Programming
+
+<span style="color:gray">From imperative to declarative async composition of logic - summary</span>
 
 <ol>
 <li class="fragment" data-fragment-index="1">We can no longer think in terms of a linear execution model where one request is handled by one thread</li>
@@ -65,25 +71,33 @@ are:
 
 +++
 
-### Reactive Systems - Responsive
+### Reactive Systems
+
+<span style="color:gray">Responsive</span>
 
   - The system responds in a timely manner if at all possible.
 
 +++
 
-### Reactive Systems - Resilient
+### Reactive Systems
+
+<span style="color:gray">Resilient</span>
 
   - The system stays responsive in the face of failure.
 
 +++
 
-### Reactive Systems - Elastic
+### Reactive Systems
+ 
+<span style="color:gray">Elastic</span>
 
-  - The system stays responsive under varying workload
+  - The system stays responsive under varying workload.
 
 +++
 
-### Reactive Systems - Message Driven
+### Reactive Systems
+
+<span style="color:gray">Message Driven</span>
 
   - Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency.
 
