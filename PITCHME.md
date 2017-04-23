@@ -15,7 +15,7 @@ is about non-blocking applications that are:
   - require a small number of threads to scale vertically
   - use backpressure - which is a mechanism to ensure producers don’t overwhelm consumers
 
----
++++
 
 ### From imperative to declarative async composition of logic - service
 
