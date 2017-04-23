@@ -8,7 +8,7 @@
 
 ### Reactive Programming
 
-... is about non-blocking applications that are:
+is about non-blocking applications that are:
 
   - asynchronous
   - message-driven
@@ -54,7 +54,7 @@ As we can see the output of the controller method is evaluated after its executi
 
 ### Reactive Systems
 
-... are:
+are:
 
   - responsive
   - resilient
@@ -65,7 +65,7 @@ As we can see the output of the controller method is evaluated after its executi
 
 ### Reactive Systems Traits
 
-![Reactive Traits](reactive-traits.svg?raw=true)
+![Reactive Traits](reactive-traits.svg)
 
 +++
 
