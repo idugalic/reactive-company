@@ -36,7 +36,7 @@ Flux<BlogPost> list() {
 ### From imperative to declarative async composition of logic - log
 
 A possible log output we could see is:
-![Log - Reactive](logs-reactive.png?raw=true)
+![Log - Reactive](assets/logs-reactive.png?raw=true)
 
 As we can see the output of the controller method is evaluated after its execution in a different thread too!
 
@@ -60,12 +60,12 @@ are:
   - resilient
   - elastic
   - message driven
-  
+
 +++
 
 ### Reactive Systems Traits
 
-![Reactive Traits](reactive-traits.svg)
+![Reactive Traits](assets/reactive-traits.png?raw=true)
 
 +++
 
@@ -89,12 +89,11 @@ are:
 
 ### Reactive Systems - Message Driven
 
-  - Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency. 
+  - Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency.
 
 ---
 
 ### Summary
 
- - Reactive programming offers productivity for developers—through performance and resource efficiency—at the component level for internal logic and dataflow transformation. 
+ - Reactive programming offers productivity for developers—through performance and resource efficiency—at the component level for internal logic and dataflow transformation.
  - Reactive systems offer productivity for architects and DevOps practitioners—through resilience and elasticity—at the system level
- 
