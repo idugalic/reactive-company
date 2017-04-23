@@ -1,5 +1,3 @@
-#HSLIDE
-
 ### Reactive Programming
 ### And
 ### Reactive Systems
