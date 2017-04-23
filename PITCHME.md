@@ -10,7 +10,7 @@
 
 ### Reactive Programming
 
-Reactive programming is about non-blocking applications that are:
+... is about non-blocking applications that are:
 
   - asynchronous
   - message-driven
@@ -55,3 +55,18 @@ As we can see the output of the controller method is evaluated after its executi
 ---
 
 ### Reactive Systems
+
+... are:
+
+  - responsive
+  - resilient
+  - elastic
+  - message driven
+  
+---
+
+### Summary
+
+ - Reactive programming offers productivity for developers—through performance and resource efficiency—at the component level for internal logic and dataflow transformation. 
+ - Reactive systems offer productivity for architects and DevOps practitioners—through resilience and elasticity—at the system level
+ 
