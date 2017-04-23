@@ -4,7 +4,7 @@ dependencies:
 
 test:
   override:
-    - mvn -o test
+    - mvn test
   post:
     - mkdir -p artifacts/reports/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} artifacts/reports/junit/ \;
