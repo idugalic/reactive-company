@@ -118,10 +118,12 @@ are:
 
 ### Why now?
 
-The promise of Reactive is that you can do more with less, specifically you can process higher loads with fewer threads. This days we are dealing with more data!
+The promise of Reactive is that you can do more with less, specifically you can process higher loads with fewer threads. 
 
-  - For the right problem, the effects are dramatic. 
-  - For the wrong problem, the effects might go into reverse (you actually make things worse).
+<ol>
+	<li class="fragment" data-fragment-index="1">For the right problem, the effects are dramatic</li>
+	<li class="fragment" data-fragment-index="2">For the wrong problem, the effects might go into reverse (you actually make things worse)</li>
+</ol>
 
 ---
 
