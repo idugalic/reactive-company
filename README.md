@@ -303,7 +303,7 @@ The reports will be available in the console and in *html files within the 'targ
 ## Log output
 
 A possible log output we could see is:
-![Log - Reactive](logs-reactive.png?raw=true)
+![Log - Reactive](assets/logs-reactive.png?raw=true)
 
 As we can see the output of the controller method is evaluated after its execution in a different thread too!
 
