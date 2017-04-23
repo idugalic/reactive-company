@@ -4,7 +4,7 @@ dependencies:
 
 test:
   override:
-    - mvn -o surefire:test
+    - mvn test
 
 deployment:
   main:
