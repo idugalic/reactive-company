@@ -61,6 +61,36 @@ As we can see the output of the controller method is evaluated after its executi
   - elastic
   - message driven
   
++++
+
+### Reactive Systems Traits
+
+![Reactive Traits](reactive-traits.svg?raw=true)
+
++++
+
+### Reactive Systems - Responsive
+
+  - The system responds in a timely manner if at all possible.
+
++++
+
+### Reactive Systems - Resilient
+
+  - The system stays responsive in the face of failure.
+
++++
+
+### Reactive Systems - Elastic
+
+  - The system stays responsive under varying workload
+
++++
+
+### Reactive Systems - Message Driven
+
+  - Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency. 
+
 ---
 
 ### Summary
