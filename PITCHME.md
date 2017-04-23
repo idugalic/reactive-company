@@ -1,1 +1,49 @@
-# Reactive Programming And Reactive Systems
+#HSLIDE
+
+### Reactive Programming
+### And
+### Reactive Systems
+
+<span style="color:gray">Lab</span>
+
+---
+
+### Reactive Programming
+
+Reactive programming is about non-blocking applications that are:
+
+  - asynchronous
+  - message-driven
+  - require a small number of threads to scale vertically
+  - use backpressure - which is a mechanism to ensure producers don’t overwhelm consumers
+
+---
+
+### From imperative to declarative async composition of logic
+
+A possible log output we could see is:
+![Log - Reactive](logs-reactive.png?raw=true)
+
+As we can see the output of the controller method is evaluated after its execution in a different thread too!
+
+```java
+@GetMapping("/blogposts")
+Flux<BlogPost> list() {
+	LOG.info("Received request: BlogPost - List");
+	try {
+		return this.blogPostRepository.findAll().log();
+	} finally {
+		LOG.info("Request pocessed: BlogPost - List");
+	}
+}
+```
+
+<ol>
+<li class="fragment" data-fragment-index="1">We can no longer think in terms of a linear execution model where one request is handled by one thread</li>
+<li class="fragment" data-fragment-index="2">The reactive streams will be handled by a lot of threads in their lifecycle</li>
+<li class="fragment" data-fragment-index="3">We no longer can rely on thread affinity for things like the security context or transaction handling</li>
+</ol>
+
+---
+
+### Reactive Systems
