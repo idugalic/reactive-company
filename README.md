@@ -1,4 +1,4 @@
-# [projects](http://idugalic.github.io/projects)/reactive-company [![Build Status](https://travis-ci.org/idugalic/reactive-company.svg?branch=master)](https://travis-ci.org/idugalic/reactive-company)
+# [projects](http://idugalic.github.io/projects)/reactive-company [![Build Status](https://travis-ci.org/idugalic/reactive-company.svg?branch=master)](https://travis-ci.org/idugalic/reactive-company) [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/idugalic/reactive-company/master?grs=github&t=white)
 
 This project is intended to demonstrate best practices for building a reactive web application with Spring 5 platform.
 
