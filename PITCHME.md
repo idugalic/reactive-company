@@ -19,7 +19,8 @@ is about non-blocking applications that are:
 
 ### Reactive Programming
 
-<span style="color:gray">From imperative to declarative async composition of logic - service</span>
+<span style="color:darkgray">From imperative to declarative async composition of logic</span>
+<span style="color:gray">Service</span>
 
 ```java
 @GetMapping("/blogposts")
@@ -37,7 +38,8 @@ Flux<BlogPost> list() {
 
 ### Reactive Programming
 
-<span style="color:gray">From imperative to declarative async composition of logic - log</span>
+<span style="color:darkgray">From imperative to declarative async composition of logic</span>
+<span style="color:gray">Log</span>
 
 A possible log output we could see is:
 ![Log - Reactive](assets/logs-reactive.png?raw=true)
@@ -48,7 +50,8 @@ As we can see the output of the controller method is evaluated after its executi
 
 ### Reactive Programming
 
-<span style="color:gray">From imperative to declarative async composition of logic - summary</span>
+<span style="color:darkgray">From imperative to declarative async composition of logic</span>
+<span style="color:gray">Summary</span>
 
 <ol>
 <li class="fragment" data-fragment-index="1">We can no longer think in terms of a linear execution model where one request is handled by one thread</li>
