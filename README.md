@@ -240,7 +240,7 @@ $ docker service ls
 ```bash
 $ docker service scale stack_reactive-company=2
 ```
-Now you have two tasks/containers runing for this service.
+Now you have two tasks/containers running for this service.
 
 ##### Browse docker service logs
 
@@ -277,6 +277,8 @@ $ curl http://localhost:8080/projects
 ```
 
 ##  Load testing with Gatling
+
+Run application first (by maven or docker)
 
 ```bash
 $ ./mvnw gatling:execute
