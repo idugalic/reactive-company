@@ -20,3 +20,6 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
+  
+notifications:
+  slack: idugalic:1roOPmlQdmPIn37c3jqgmAq8
