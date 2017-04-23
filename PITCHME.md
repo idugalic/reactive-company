@@ -19,12 +19,7 @@ Reactive programming is about non-blocking applications that are:
 
 ---
 
-### From imperative to declarative async composition of logic
-
-A possible log output we could see is:
-![Log - Reactive](logs-reactive.png?raw=true)
-
-As we can see the output of the controller method is evaluated after its execution in a different thread too!
+### From imperative to declarative async composition of logic - service
 
 ```java
 @GetMapping("/blogposts")
@@ -37,6 +32,19 @@ Flux<BlogPost> list() {
 	}
 }
 ```
+
++++
+
+### From imperative to declarative async composition of logic - log
+
+A possible log output we could see is:
+![Log - Reactive](logs-reactive.png?raw=true)
+
+As we can see the output of the controller method is evaluated after its execution in a different thread too!
+
++++
+
+### From imperative to declarative async composition of logic
 
 <ol>
 <li class="fragment" data-fragment-index="1">We can no longer think in terms of a linear execution model where one request is handled by one thread</li>
