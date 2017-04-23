@@ -49,14 +49,13 @@ As we can see the output of the controller method is evaluated after its executi
 +++
 
 ### Reactive Programming
-#### From imperative to declarative async composition of logic
 
 <span style="color:gray">Summary</span>
 
 <ol>
-<li class="fragment" data-fragment-index="1">We can no longer think in terms of a linear execution model where one request is handled by one thread</li>
-<li class="fragment" data-fragment-index="2">The reactive streams will be handled by a lot of threads in their lifecycle</li>
-<li class="fragment" data-fragment-index="3">We no longer can rely on thread affinity for things like the security context or transaction handling</li>
+	<li class="fragment" data-fragment-index="1">We can no longer think in terms of a linear execution model where one request is handled by one thread</li>
+	<li class="fragment" data-fragment-index="2">The reactive streams will be handled by a lot of threads in their lifecycle</li>
+	<li class="fragment" data-fragment-index="3">We no longer can rely on thread affinity for things like the security context or transaction handling</li>
 </ol>
 
 ---
@@ -104,9 +103,36 @@ are:
 
   - Reactive Systems rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling, isolation and location transparency.
 
++++
+
+### Reactive Systems
+
+<span style="color:gray">Summary</span>
+
+<ol>
+	<li class="fragment" data-fragment-index="1">Reactive programming offers productivity for developers—through performance and resource efficiency—at the component level for internal logic and dataflow transformation</li>
+	<li class="fragment" data-fragment-index="2">Reactive systems offer productivity for architects and DevOps practitioners—through resilience and elasticity—at the system level</li>
+</ol>
+
 ---
 
-### Summary
+### Why now?
 
- - Reactive programming offers productivity for developers—through performance and resource efficiency—at the component level for internal logic and dataflow transformation.
- - Reactive systems offer productivity for architects and DevOps practitioners—through resilience and elasticity—at the system level
+The promise of Reactive is that you can do more with less, specifically you can process higher loads with fewer threads. This days we are dealing with more data!
+
+  - For the right problem, the effects are dramatic. 
+  - For the wrong problem, the effects might go into reverse (you actually make things worse).
+
+---
+
+### Load And Performance testing
+
+Is your web application responsive? <span style="color:gray">There is only one way to know this: test your web application!</span>
+
+```bash
+$ ./mvnw gatling:execute
+```
+
+
+
+
