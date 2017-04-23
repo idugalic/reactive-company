@@ -18,8 +18,8 @@ is about non-blocking applications that are:
 +++
 
 ### Reactive Programming
+#### From imperative to declarative async composition of logic
 
-<span style="color:darkgray">From imperative to declarative async composition of logic</span>
 <span style="color:gray">Service</span>
 
 ```java
@@ -37,8 +37,8 @@ Flux<BlogPost> list() {
 +++
 
 ### Reactive Programming
+#### From imperative to declarative async composition of logic
 
-<span style="color:darkgray">From imperative to declarative async composition of logic</span>
 <span style="color:gray">Log</span>
 
 A possible log output we could see is:
@@ -49,8 +49,8 @@ As we can see the output of the controller method is evaluated after its executi
 +++
 
 ### Reactive Programming
+#### From imperative to declarative async composition of logic
 
-<span style="color:darkgray">From imperative to declarative async composition of logic</span>
 <span style="color:gray">Summary</span>
 
 <ol>
