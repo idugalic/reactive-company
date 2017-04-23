@@ -178,7 +178,9 @@ public interface BlogPostRepository extends ReactiveSortingRepository<BlogPost, 
 ```
 ## CI with Travis
 
-The application is built, tested and deployed by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push to master branch and on a daily basis.
+The application is built, tested and deployed by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push and on a daily basis.
+
+On master branch only:
 
 - Docker image is pushed to [Docker Hub](https://hub.docker.com/r/idugalic/reactive-company/)
 - Jar file (artifact) is pushed to [packagecloud.io](https://packagecloud.io/idugalic/mycompany/install#maven)
