@@ -25,7 +25,6 @@ This project is intended to demonstrate best practices for building a reactive w
        * [Browse the application:](#browse-the-application)
     * [Load testing with Gatling](#load-testing-with-gatling)
     * [Log output](#log-output)
-    * [Circuit Breaker](#circuit-breaker)
     * [References and further reading](#references-and-further-reading)
 
 
@@ -200,19 +199,6 @@ $ cd reactive-company
 $ ./mvnw spring-boot:run
 ```
 
-Build Docker images (optional):
-
-```bash
-$ ./mvnw clean install
-$ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build
-```
-
-or build and push images to docker hub via maven (requires username and password of a docker repository):
-
-```bash
-$ DOCKER_HOST=unix:///var/run/docker.sock mvn docker:build -DpushImage
-```
-
 ### Run the application by Docker
 
 I am running Docker Community Edition, version: 17.05.0-ce-rc1-mac8 (Channel: edge).
@@ -294,7 +280,7 @@ $ curl http://localhost:8080/projects
 ##  Load testing with Gatling
 
 ```bash
-$ mvn gatling:execute
+$ ./mvnw gatling:execute
 ```
 
 By default src/main/test/scala/com/idugalic/RecordedSimulation.scala will be run.
@@ -321,9 +307,6 @@ Flux<BlogPost> list() {
 
 We can no longer think in terms of a linear execution model where one request is handled by one thread. The reactive streams will be handled by a lot of threads in their lifecycle. This complicates things when we migrate from the old MVC framework. We no longer can rely on thread affinity for things like the security context or transaction handling.
 
-## Circuit Breaker
-[Functional and Reactive Spring with Reactor and Netflix OSS](https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix)
-
 ## References and further reading
 
 - http://www.reactivemanifesto.org/
@@ -336,3 +319,4 @@ We can no longer think in terms of a linear execution model where one request is
 - https://www.ivankrizsan.se/2016/05/06/introduction-to-load-testing-with-gatling-part-4/
 - https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix
 - [asynchronous and non-blocking IO](http://blog.omega-prime.co.uk/?p=155)
+- [Functional and Reactive Spring with Reactor and Netflix OSS](https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix)
