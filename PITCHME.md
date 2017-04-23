@@ -60,11 +60,7 @@ are:
   - resilient
   - elastic
   - message driven
-
-+++
-
-### Reactive Systems Traits
-
+  
 ![Reactive Traits](assets/reactive-traits.png?raw=true)
 
 +++
