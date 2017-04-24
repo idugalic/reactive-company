@@ -47,7 +47,6 @@ is about non-blocking applications that are:
 
 <span style="color:gray">Non-blocking in practice</span>
 
-  - <span style="color:gray">In practice this usually manifests as an API that allows access to the resource if it is available otherwise it immediately returns informing the caller that the resource is not currently available.</span>
   - <span style="color:gray">Generally APIs providing non-blocking IO will also provide some sort of interface where you can efficiently wait for certain operations to enter a state where invoking the non-blocking IO operation will actually make some progress rather than immediately returning. APIs in this style are implementations of the "reactor" pattern.</span>
 
 +++
