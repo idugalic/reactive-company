@@ -21,8 +21,16 @@ is about non-blocking applications that are:
 
 <span style="color:gray">Asynchronous</span>
 
-  - Processing of a request occurs at an arbitrary point in time, sometime after it has been transmitted from client to service. <span style="color:gray">The client cannot directly observe, or synchronize with, the execution that occurs within the service.</span>
-  - Asynchronous IO refers to an interface where you supply a callback to an IO operation, which is invoked when the operation completes. <span style="color:gray">This invocation often happens to an entirely different thread to the one that originally made the request, but this is not necessarily the case. Asynchronous IO is a manifestation of the "proactor" pattern.</span>
+  - Processing of a request occurs at an arbitrary point in time, sometime after it has been transmitted from client to service. 
+  - Asynchronous IO refers to an interface where you supply a callback to an IO operation, which is invoked when the operation completes.
++++
+
+### Reactive Programming
+
+<span style="color:gray">Asynchronous in practice</span>
+
+  - <span style="color:gray">The client cannot directly observe, or synchronize with, the execution that occurs within the service.</span>
+  - <span style="color:gray">This invocation often happens to an entirely different thread to the one that originally made the request, but this is not necessarily the case. Asynchronous IO is a manifestation of the "proactor" pattern.</span>
 
 +++
 
@@ -30,8 +38,17 @@ is about non-blocking applications that are:
 
 <span style="color:gray">Non-blocking</span>
 
-  - In concurrent programming an algorithm is considered non-blocking if threads competing for a resource do not have their execution indefinitely postponed by mutual exclusion protecting that resource. <span style="color:gray">In practice this usually manifests as an API that allows access to the resource if it is available otherwise it immediately returns informing the caller that the resource is not currently available.</span>
-  - Non-blocking IO refers to an interface where IO operations will return immediately with a special error code if called when they are in a state that would otherwise cause them to block. <span style="color:gray">Generally APIs providing non-blocking IO will also provide some sort of interface where you can efficiently wait for certain operations to enter a state where invoking the non-blocking IO operation will actually make some progress rather than immediately returning. APIs in this style are implementations of the "reactor" pattern.</span>
+  - In concurrent programming an algorithm is considered non-blocking if threads competing for a resource do not have their execution indefinitely postponed by mutual exclusion protecting that resource.
+  - Non-blocking IO refers to an interface where IO operations will return immediately with a special error code if called when they are in a state that would otherwise cause them to block.
+
++++
+
+### Reactive Programming
+
+<span style="color:gray">Non-blocking in practice</span>
+
+  - <span style="color:gray">In practice this usually manifests as an API that allows access to the resource if it is available otherwise it immediately returns informing the caller that the resource is not currently available.</span>
+  - <span style="color:gray">Generally APIs providing non-blocking IO will also provide some sort of interface where you can efficiently wait for certain operations to enter a state where invoking the non-blocking IO operation will actually make some progress rather than immediately returning. APIs in this style are implementations of the "reactor" pattern.</span>
 
 +++
 
