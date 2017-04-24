@@ -13,7 +13,44 @@ is about non-blocking applications that are:
   - asynchronous
   - message-driven
   - require a small number of threads to scale vertically
-  - use backpressure - which is a mechanism to ensure producers don’t overwhelm consumers
+  - use back-pressure
+
++++
+
+### Reactive Programming
+
+<span style="color:gray">Asynchronous</span>
+
+  - Processing of a request occurs at an arbitrary point in time, sometime after it has been transmitted from client to service. <span style="color:gray">The client cannot directly observe, or synchronize with, the execution that occurs within the service.</span>
+  - Asynchronous IO refers to an interface where you supply a callback to an IO operation, which is invoked when the operation completes. <span style="color:gray">This invocation often happens to an entirely different thread to the one that originally made the request, but this is not necessarily the case. Asynchronous IO is a manifestation of the "proactor" pattern.</span>
+
++++
+
+### Reactive Programming
+
+<span style="color:gray">Non-blocking</span>
+
+  - In concurrent programming an algorithm is considered non-blocking if threads competing for a resource do not have their execution indefinitely postponed by mutual exclusion protecting that resource. <span style="color:gray">In practice this usually manifests as an API that allows access to the resource if it is available otherwise it immediately returns informing the caller that the resource is not currently available.</span>
+  - Non-blocking IO refers to an interface where IO operations will return immediately with a special error code if called when they are in a state that would otherwise cause them to block. <span style="color:gray">Generally APIs providing non-blocking IO will also provide some sort of interface where you can efficiently wait for certain operations to enter a state where invoking the non-blocking IO operation will actually make some progress rather than immediately returning. APIs in this style are implementations of the "reactor" pattern.</span>
+
++++
+
+### Reactive Programming
+
+<span style="color:gray">Message-driven</span>
+
+  - Event-driven system focuses on addressable event sources while a message-driven system concentrates on addressable recipients.
+  - Resilience is more difficult to achieve in an event-driven system.
+
++++
+
+### Reactive Programming
+
+<span style="color:gray">Back-pressure</span>
+
+  - Back-pressure is an important feedback mechanism that allows systems to gracefully respond to load rather than collapse under it.
+  - A mechanism to ensure producers don’t overwhelm consumers.
+  - One component in the chain will communicate the fact that it is under stress to upstream components and so get them to reduce the load.
 
 +++
 
