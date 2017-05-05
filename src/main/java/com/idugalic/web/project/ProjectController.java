@@ -1,6 +1,5 @@
 package com.idugalic.web.project;
 
-import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +40,9 @@ public class ProjectController {
 	}
 
 	@PostMapping("/projects")
-	Mono<Void> create(@RequestBody Publisher<Project> projectStream) {
+	Mono<Project> create(@RequestBody Project project) {
 		LOG.info("Project - Create");
-		return this.projectRepository.save(projectStream).then();
+		return this.projectRepository.save(project);
 	}
 	
 	@GetMapping("/projects")
@@ -55,7 +54,7 @@ public class ProjectController {
 	@GetMapping("/projects/{id}")
 	Mono<Project> findById(@PathVariable String id) {
 		LOG.info("Project - FindById");
-		return this.projectRepository.findOne(id);
+		return this.projectRepository.findById(id);
 	}
 	
 	@GetMapping("/projects/search/byname")

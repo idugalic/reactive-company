@@ -1,12 +1,10 @@
 package com.idugalic.web.blog;
 
-import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,10 +41,10 @@ public class BlogPostController {
 	}
 
 	@PostMapping("/blogposts")
-	Mono<Void> create(@RequestBody Publisher<BlogPost> blogPostStream) {
+	Mono<BlogPost> create(BlogPost blogPost) {
 		LOG.info("Received request: BlogPost - Create");
 		try {
-			return this.blogPostRepository.save(blogPostStream).then().log();
+			return this.blogPostRepository.save(blogPost).log();
 		} finally {
 			LOG.info("Request pocessed: BlogPost - Create");
 		}
@@ -66,7 +64,7 @@ public class BlogPostController {
 	Mono<BlogPost> findById(@PathVariable String id) {
 		LOG.info("Received request: BlogPost - FindById");
 		try {
-			return this.blogPostRepository.findOne(id).log();
+			return this.blogPostRepository.findById(id).log();
 		} finally {
 			LOG.info("Request pocessed: BlogPost - FindById");
 		}
