@@ -54,26 +54,24 @@
 			<scope>test</scope>
 		</dependency>
 
-		 <!--
-            Test dependencies.
-            For Gatling load simulations, we only need this single dependency.
-        -->
-        <dependency>
-            <groupId>io.gatling.highcharts</groupId>
-            <artifactId>gatling-charts-highcharts</artifactId>
-            <version>${gatling.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- Test dependencies. For Gatling load simulations, we only need this 
+			single dependency. -->
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
-                <extensions>
-    			<extension>
-     			 <groupId>io.packagecloud.maven.wagon</groupId>
-      			 <artifactId>maven-packagecloud-wagon</artifactId>
-      			 <version>0.0.4</version>
-    			</extension>
-  		</extensions>
+		<extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+				<artifactId>maven-packagecloud-wagon</artifactId>
+				<version>0.0.4</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -101,20 +99,20 @@
 					</resources>
 				</configuration>
 			</plugin>
-			 <!-- Gatling Maven plugin that runs a load simulation. -->
-            <plugin>
-                <groupId>io.gatling</groupId>
-                <artifactId>gatling-maven-plugin</artifactId>
-                <version>${gatling-plugin.version}</version>
-                <configuration>
-                    <simulationClass>com.idugalic.RecordedSimulation</simulationClass>
-                </configuration>
-            </plugin>
+			<!-- Gatling Maven plugin that runs a load simulation. -->
+			<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>${gatling-plugin.version}</version>
+				<configuration>
+					<simulationClass>com.idugalic.RecordedSimulation</simulationClass>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
 	<repositories>
-	 <repository>
+		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
 			<url>https://repo.spring.io/snapshot</url>
@@ -149,19 +147,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
-	<distributionManagement>
-	  <repository>
-	    <id>packagecloud-travis</id>
-	    <url>
-	      packagecloud+https://packagecloud.io/idugalic/mycompany
-	    </url>
-	  </repository>
-	  <snapshotRepository>
-	    <id>packagecloud-travis</id>
-	    <url>
-	      packagecloud+https://packagecloud.io/idugalic/mycompany
-	    </url>
-	  </snapshotRepository>
-	</distributionManagement>
 </project>
