@@ -17,6 +17,8 @@ import com.idugalic.domain.project.ProjectRepository;
 @EnableReactiveMongoRepositories
 @EnableWebFlux
 @EnableMongoAuditing
+//@EnableEurekaClient
+//@EnableCircuitBreaker
 public class ReactiveComapnyApplication {
 
 	public static void main(String[] args) {
