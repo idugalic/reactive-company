@@ -3,6 +3,8 @@ package com.idugalic;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
@@ -17,8 +19,8 @@ import com.idugalic.domain.project.ProjectRepository;
 @EnableReactiveMongoRepositories
 @EnableWebFlux
 @EnableMongoAuditing
-//@EnableEurekaClient
-//@EnableCircuitBreaker
+@EnableEurekaClient
+@EnableCircuitBreaker
 public class ReactiveComapnyApplication {
 
 	public static void main(String[] args) {
