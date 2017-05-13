@@ -11,7 +11,13 @@ import com.idugalic.domain.project.Project;
 import com.idugalic.domain.project.ProjectRepository;
 
 import reactor.core.publisher.Flux;
-
+/**
+ * 
+ * @author idugalic
+ * 
+ * An index/home controller.
+ *
+ */
 @Controller
 public class HomeController {
 

@@ -22,8 +22,8 @@ import reactor.core.publisher.Mono;
  *         On the server-side WebFlux supports 2 distinct programming models:
  *
  *         - Annotation-based with @Controller and the other annotations
- *         supported also with Spring MVC - Functional, Java 8 lambda style
- *         routing and handling
+ *         supported also with Spring MVC.
+ *         - Functional, Java 8 lambda style routing and handling
  * 
  *         This is example of 'Annotation-based with @Controller' programming
  *         model.
