@@ -1,7 +1,13 @@
 server:
   port: ${PORT:8080}
 
+spring:
+  thymeleaf: 
+    reactive:
+      max-chunk-size: 8192
+    cache: false
 
+      
 ---
 spring:
   profiles: docker

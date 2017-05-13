@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
-import org.springframework.web.reactive.config.EnableWebFlux;
 
 import com.idugalic.domain.blog.BlogPost;
 import com.idugalic.domain.blog.BlogPostRepository;
@@ -14,15 +13,15 @@ import com.idugalic.domain.project.Project;
 import com.idugalic.domain.project.ProjectRepository;
 
 @SpringBootApplication
-@EnableReactiveMongoRepositories
-@EnableWebFlux
 @EnableMongoAuditing
+@EnableReactiveMongoRepositories
+//@EnableWebFlux
 public class ReactiveComapnyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ReactiveComapnyApplication.class, args);
 	}
-
+	
 	@Bean
 	CommandLineRunner initData(BlogPostRepository blogPostRepository, ProjectRepository projectRepository) {
 		return (p) -> {
