@@ -265,13 +265,15 @@ It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick on
 
 ### Browse the application:
 
-Blog posts:
+Index page is available on http://localhost:8080. 
+
+Blog posts (REST API):
 ```bash
 $ curl http://localhost:8080/blogposts
 ```
 
 
-Projects:
+Projects (REST API):
 ```bash
 $ curl http://localhost:8080/projects
 ```
