@@ -210,7 +210,6 @@ A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines,
 
 ```bash
 $ cd reactive-company
-$ ./mvnw clean install
 $ ./docker-swarm.sh
 ```
 
