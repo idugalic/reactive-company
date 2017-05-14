@@ -265,7 +265,7 @@ It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick on
 
 ### Browse the application:
 
-Index page
+#### Index page
 
 ```bash
 curl -v -H "Accept: text/event-stream" http://localhost:8080
@@ -276,7 +276,7 @@ In the response bellow you see that we are receiving server side events as reque
 
  - Projects are fully resolve by the Publisher - Thymeleaf will not be executed as a part of the data flow
 
-```bash
+```html
 * Rebuilt URL to: http://localhost:8080/
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
@@ -414,13 +414,13 @@ data: </html>
 
 ```
 
-Blog posts (REST API):
+#### Blog posts (REST API):
 ```bash
 $ curl http://localhost:8080/blogposts
 ```
 
 
-Projects (REST API):
+#### Projects (REST API):
 ```bash
 $ curl http://localhost:8080/projects
 ```
