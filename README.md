@@ -183,15 +183,16 @@ The application is built, tested and deployed by [Travis](https://travis-ci.org/
 
 ## Running instructions
 
+### Run the application by maven:
+
 This application is using embedded mongo database for testing only.
-You have to install and run mongo database before you run the application.
+You have to install and run mongo database before you can run the application loacaly.
 
 ```bash
 $ brew install mongodb
-$ mongod
+$ brew services start mongodb
 ```
-
-### Run the application by maven:
+Run it:
 
 ```bash
 $ cd reactive-company
@@ -200,7 +201,7 @@ $ ./mvnw spring-boot:run
 
 ### Run the application by Docker
 
-I am running Docker Community Edition, version: 17.05.0-ce-rc1-mac8 (Channel: edge).
+I am running Docker Community Edition, version: 17.05.0-ce-mac11 (Channel: edge).
 
 A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines, or nodes, where you deploy services. The Docker Engine CLI and API include commands to manage swarm nodes (e.g., add or remove nodes), and deploy and orchestrate services across the swarm. By running script bellow you will initialize a simple swarm with one node, and you will install services:
 
@@ -209,6 +210,7 @@ A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines,
 
 ```bash
 $ cd reactive-company
+$ ./mvnw clean install
 $ ./docker-swarm.sh
 ```
 
@@ -253,7 +255,8 @@ You will be able to determine what task/container handled the request.
 
 When using HTTP/1.1, by default, the TCP connections are left open for reuse. Docker swarm load balancer will not work as expected in this case. You will get routed to the same task of the service every time.
 
-You can use 'curl' command line tool (NOT BROWSER) to avoid this problem ;) and consider using more serious load balancer in production.
+You can use 'curl' command line tool (NOT BROWSER) to avoid this problem.
+
 The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many applications require additional features, like these, to name just a few:
 
 - SSL/TLS termination
@@ -261,7 +264,6 @@ The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many application
 - Access control and authorization
 - Rewrites and redirects
 
-It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick one.
 
 ### Browse the application:
 
