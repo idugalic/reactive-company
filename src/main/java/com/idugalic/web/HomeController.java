@@ -45,6 +45,11 @@ public class HomeController {
         model.addAttribute("blogPosts", blogPostStream);
         
         //// No need to fully resolve the Publisher! We will just let it drive (the "blogPosts" variable can be a Publisher<X>, in which case it will drive the execution of the engine and Thymeleaf will be executed as a part of the data flow)
+        //// Create a data-driver context variable that sets Thymeleaf in data-driven mode,
+        //// rendering HTML (iterations) as items are produced in a reactive-friendly manner.
+        //// This object also works as wrapper that avoids Spring WebFlux trying to resolve
+        //// it completely before rendering the HTML.
+        
         //model.addAttribute("blogPosts", new ReactiveDataDriverContextVariable(blogPostStream, 1000));
         
         final Flux<Project> projectStream = this.projectRepository.findAll().log();
