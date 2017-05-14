@@ -177,7 +177,7 @@ public interface BlogPostRepository extends ReactiveSortingRepository<BlogPost, 
 ```
 ## CI with Travis
 
-The application is built, tested and deployed by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push to master branch and on a daily basis.
+The application is build by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push to master branch.
 
 - Docker image is pushed to [Docker Hub](https://hub.docker.com/r/idugalic/reactive-company/)
 
@@ -326,7 +326,7 @@ data:
 
 event: message
 id: 1
-data: <tr>
+data:                                   <tr>
 data: 						<td>title1</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -334,7 +334,7 @@ data: 					</tr>
 
 event: message
 id: 2
-data: <tr>
+data:                                   <tr>
 data: 						<td>title2</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -342,7 +342,7 @@ data: 					</tr>
 
 event: message
 id: 3
-data: <tr>
+data:                                   <tr>
 data: 						<td>title3</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -350,7 +350,7 @@ data: 					</tr>
 
 event: message
 id: 4
-data: <tr>
+data:                                   <tr>
 data: 						<td>title4</td>
 data: 						<td>false</td>
 data: 						<td></td>
