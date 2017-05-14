@@ -270,7 +270,7 @@ It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick on
 ```bash
 curl -v -H "Accept: text/event-stream" http://localhost:8080
 ``` 
-In the response bellow you see that we are receiving server side events as requested in CURL command. 
+In the response bellow (resolved by [HomeController.java](https://github.com/idugalic/reactive-company/blob/master/src/main/java/com/idugalic/web/HomeController.java)) we are receiving Server-Sent Events (SSE) as requested in CURL command. 
 
  - Blog posts are not fully resolve by the Publisher - Thymeleaf will be executed as a part of the data flow
 
