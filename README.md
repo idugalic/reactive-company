@@ -265,7 +265,154 @@ It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick on
 
 ### Browse the application:
 
-Index page is available on http://localhost:8080. 
+Index page
+
+```bash
+curl -v -H "Accept: text/event-stream" http://localhost:8080
+``` 
+In the response bellow you see that we are receiving server side events as requested in CURL command. 
+
+ - Blog posts are not fully resolve by the Publisher - Thymeleaf will be executed as a part of the data flow
+
+ - Projects are fully resolve by the Publisher - Thymeleaf will not be executed as a part of the data flow
+
+```bash
+* Rebuilt URL to: http://localhost:8080/
+*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+> GET / HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.51.0
+> Accept: text/event-stream
+> 
+< HTTP/1.1 200 OK
+< transfer-encoding: chunked
+< Content-Type: text/event-stream
+< Content-Language: en-US
+< 
+event: head
+id: 0
+data: <!DOCTYPE html>
+data: <html>
+data: <head>
+data: 
+data: <meta charset="utf-8">
+data: <meta http-equiv="X-UA-Compatible" content="IE=edge">
+data: <meta name="viewport" content="width=device-width, initial-scale=1">
+data: 
+data: <title>Reactive Company</title>
+data: 
+data: <link href="/css/bootstrap.min.css" rel="stylesheet">
+data: <link href="/css/reactive-company.css" rel="stylesheet">
+data: 
+data: </head>
+data: <body>
+data: 	<div class="container">
+data: 		<div class="row">
+data: 			<h3>Blog posts</h3>
+data: 			<table class="table table-striped">
+data: 				<thead>
+data: 					<tr>
+data: 						<th>Title</th>
+data: 						<th>Published</th>
+data: 						<th>Publish time</th>
+data: 					</tr>
+data: 				</thead>
+data: 				<tbody>
+data: 					
+
+event: message
+id: 1
+data: <tr>
+data: 						<td>title1</td>
+data: 						<td>false</td>
+data: 						<td></td>
+data: 					</tr>
+
+event: message
+id: 2
+data: <tr>
+data: 						<td>title2</td>
+data: 						<td>false</td>
+data: 						<td></td>
+data: 					</tr>
+
+event: message
+id: 3
+data: <tr>
+data: 						<td>title3</td>
+data: 						<td>false</td>
+data: 						<td></td>
+data: 					</tr>
+
+event: message
+id: 4
+data: <tr>
+data: 						<td>title4</td>
+data: 						<td>false</td>
+data: 						<td></td>
+data: 					</tr>
+
+event: tail
+id: 5
+data: 
+data: 				</tbody>
+data: 			</table>
+data: 		</div>
+data: 		<div class="row">
+data: 			<h3>Projects</h3>
+data: 			<table class="table table-striped">
+data: 			<thead>
+data: 					<tr>
+data: 						<th>Name</th>
+data: 						<th>Repository URL</th>
+data: 						<th>Site URL</th>
+data: 						<th>Category</th>
+data: 						<th>Description</th>
+data: 					</tr>
+data: 				</thead>
+data: 				<tbody>
+data: 					<tr>
+data: 						<td>name1</td>
+data: 						<td>repoUrl1</td>
+data: 						<td>siteUrl1</td>
+data: 						<td>category1</td>
+data: 						<td>description1</td>
+data: 					</tr>
+data: 					<tr>
+data: 						<td>name2</td>
+data: 						<td>repoUrl2</td>
+data: 						<td>siteUrl2</td>
+data: 						<td>category2</td>
+data: 						<td>description2</td>
+data: 					</tr>
+data: 					<tr>
+data: 						<td>name3</td>
+data: 						<td>repoUrl3</td>
+data: 						<td>siteUrl3</td>
+data: 						<td>category3</td>
+data: 						<td>description3</td>
+data: 					</tr>
+data: 					<tr>
+data: 						<td>name4</td>
+data: 						<td>repoUrl4</td>
+data: 						<td>siteUrl4</td>
+data: 						<td>category4</td>
+data: 						<td>description4</td>
+data: 					</tr>
+data: 				</tbody>
+data: 			</table>
+data: 		</div>
+data: 	</div>
+data: 
+data: </body>
+data: </html>
+
+* Curl_http_done: called premature == 0
+* Connection #0 to host localhost left intact
+
+```
 
 Blog posts (REST API):
 ```bash
