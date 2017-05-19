@@ -177,21 +177,22 @@ public interface BlogPostRepository extends ReactiveSortingRepository<BlogPost, 
 ```
 ## CI with Travis
 
-The application is built, tested and deployed by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push to master branch and on a daily basis.
+The application is build by [Travis](https://travis-ci.org/idugalic/reactive-company). [Pipeline](https://github.com/idugalic/reactive-company/blob/master/.travis.yml) is triggered on every push to master branch.
 
 - Docker image is pushed to [Docker Hub](https://hub.docker.com/r/idugalic/reactive-company/)
 
 ## Running instructions
 
+### Run the application by maven:
+
 This application is using embedded mongo database for testing only.
-You have to install and run mongo database before you run the application.
+You have to install and run mongo database before you can run the application loacaly.
 
 ```bash
 $ brew install mongodb
-$ mongod
+$ brew services start mongodb
 ```
-
-### Run the application by maven:
+Run it:
 
 ```bash
 $ cd reactive-company
@@ -200,7 +201,7 @@ $ ./mvnw spring-boot:run
 
 ### Run the application by Docker
 
-I am running Docker Community Edition, version: 17.05.0-ce-rc1-mac8 (Channel: edge).
+I am running Docker Community Edition, version: 17.05.0-ce-mac11 (Channel: edge).
 
 A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines, or nodes, where you deploy services. The Docker Engine CLI and API include commands to manage swarm nodes (e.g., add or remove nodes), and deploy and orchestrate services across the swarm. By running script bellow you will initialize a simple swarm with one node, and you will install services:
 
@@ -253,7 +254,8 @@ You will be able to determine what task/container handled the request.
 
 When using HTTP/1.1, by default, the TCP connections are left open for reuse. Docker swarm load balancer will not work as expected in this case. You will get routed to the same task of the service every time.
 
-You can use 'curl' command line tool (NOT BROWSER) to avoid this problem ;) and consider using more serious load balancer in production.
+You can use 'curl' command line tool (NOT BROWSER) to avoid this problem.
+
 The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many applications require additional features, like these, to name just a few:
 
 - SSL/TLS termination
@@ -261,22 +263,21 @@ The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many application
 - Access control and authorization
 - Rewrites and redirects
 
-It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick one.
 
 ### Browse the application:
 
-Index page
+#### Index page
 
 ```bash
 curl -v -H "Accept: text/event-stream" http://localhost:8080
 ``` 
-In the response bellow you see that we are receiving server side events as requested in CURL command. 
+In the response bellow (resolved by [HomeController.java](https://github.com/idugalic/reactive-company/blob/master/src/main/java/com/idugalic/web/HomeController.java)) we are receiving Server-Sent Events (SSE) as requested in CURL command. 
 
  - Blog posts are not fully resolve by the Publisher - Thymeleaf will be executed as a part of the data flow
 
  - Projects are fully resolve by the Publisher - Thymeleaf will not be executed as a part of the data flow
 
-```bash
+```html
 * Rebuilt URL to: http://localhost:8080/
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
@@ -324,7 +325,7 @@ data:
 
 event: message
 id: 1
-data: <tr>
+data:                                   <tr>
 data: 						<td>title1</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -332,7 +333,7 @@ data: 					</tr>
 
 event: message
 id: 2
-data: <tr>
+data:                                   <tr>
 data: 						<td>title2</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -340,7 +341,7 @@ data: 					</tr>
 
 event: message
 id: 3
-data: <tr>
+data:                                   <tr>
 data: 						<td>title3</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -348,7 +349,7 @@ data: 					</tr>
 
 event: message
 id: 4
-data: <tr>
+data:                                   <tr>
 data: 						<td>title4</td>
 data: 						<td>false</td>
 data: 						<td></td>
@@ -414,13 +415,13 @@ data: </html>
 
 ```
 
-Blog posts (REST API):
+#### Blog posts (REST API):
 ```bash
 $ curl http://localhost:8080/blogposts
 ```
 
 
-Projects (REST API):
+#### Projects (REST API):
 ```bash
 $ curl http://localhost:8080/projects
 ```
