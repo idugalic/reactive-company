@@ -426,6 +426,12 @@ $ curl http://localhost:8080/blogposts
 $ curl http://localhost:8080/projects
 ```
 
+#### EventSource in browser
+
+Navigate to http://localhost:8080/stream in your browser (not IE).
+
+This view is resolved by StreamController and sse.html template. EventSource is used to consume events sent from the server side. These events will be rendered in HTML by Thymeleaf.
+
 ##  Load testing with Gatling
 
 Run application first (by maven or docker)
