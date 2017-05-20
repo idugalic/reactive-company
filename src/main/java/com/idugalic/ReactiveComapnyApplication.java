@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
+import org.springframework.data.mongodb.core.CollectionOptions;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 import com.idugalic.domain.blog.BlogPost;
@@ -23,9 +25,12 @@ public class ReactiveComapnyApplication {
 	}
 	
 	@Bean
-	CommandLineRunner initData(BlogPostRepository blogPostRepository, ProjectRepository projectRepository) {
+	CommandLineRunner initData(ReactiveMongoTemplate reactiveMongoTemplate, BlogPostRepository blogPostRepository, ProjectRepository projectRepository) {
 		return (p) -> {
-			blogPostRepository.deleteAll().block();
+			reactiveMongoTemplate.dropCollection(BlogPost.class).then(reactiveMongoTemplate.createCollection(
+					BlogPost.class, CollectionOptions.empty().capped(104857600))).block();
+			
+			//blogPostRepository.deleteAll().block();
 			blogPostRepository.save(new BlogPost("authorId1", "title1", "content1", "tagString1")).block();
 			blogPostRepository.save(new BlogPost("authorId2", "title2", "content2", "tagString2")).block();
 			blogPostRepository.save(new BlogPost("authorId3", "title3", "content3", "tagString3")).block();

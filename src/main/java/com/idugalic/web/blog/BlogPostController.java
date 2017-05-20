@@ -59,6 +59,17 @@ public class BlogPostController {
 			LOG.info("Request pocessed: BlogPost - List");
 		}
 	}
+	
+	@GetMapping("/tail/blogposts")
+	Flux<BlogPost> tail() {
+		LOG.info("Received request: BlogPost - Tail");
+		try {
+			// Using tailable cursor
+			return this.blogPostRepository.findBy().log();
+		} finally {
+			LOG.info("Request pocessed: BlogPost - Tail");
+		}
+	}
 
 	@GetMapping("/blogposts/{id}")
 	Mono<BlogPost> findById(@PathVariable String id) {

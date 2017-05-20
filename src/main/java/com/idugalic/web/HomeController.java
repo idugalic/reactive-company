@@ -42,15 +42,7 @@ public class HomeController {
         //// we want this variable to be completely resolved by Spring WebFlux (without blocking)
         //// before Thymeleaf starts the rendering of the HTML template. That way, this variable
         //// will have for the Thymeleaf engine the exact same appearance as a List<BlogPost>.
-        // model.addAttribute("blogPosts", blogPostStream);
-        
-        //############### Data driven ##############
-        // No need to fully resolve the Publisher! We will just let it drive (the "blogPosts" variable can be a Publisher<X>, in which case it will drive the execution of the engine and Thymeleaf will be executed as a part of the data flow)
-        // Create a data-driver context variable that sets Thymeleaf in data-driven mode,
-        // rendering HTML (iterations) as items are produced in a reactive-friendly manner.
-        // This object also works as wrapper that avoids Spring WebFlux trying to resolve
-        // it completely before rendering the HTML.
-        model.addAttribute("blogPosts", new ReactiveDataDriverContextVariable(blogPostStream, 1000));
+        model.addAttribute("blogPosts", blogPostStream);
         
         
         // Get the stream of Project objects.
@@ -62,14 +54,6 @@ public class HomeController {
         // before Thymeleaf starts the rendering of the HTML template. That way, this variable
         // will have for the Thymeleaf engine the exact same appearance as a List<Project>.
         model.addAttribute("projects", projectStream);
-        
-        //############### Data driven ##############
-        //// No need to fully resolve the Publisher! We will just let it drive (the "projects" variable can be a Publisher<X>, in which case it will drive the execution of the engine and Thymeleaf will be executed as a part of the data flow)
-        //// Create a data-driver context variable that sets Thymeleaf in data-driven mode,
-        //// rendering HTML (iterations) as items are produced in a reactive-friendly manner.
-        //// This object also works as wrapper that avoids Spring WebFlux trying to resolve
-        //// it completely before rendering the HTML.
-        // model.addAttribute("projects", new ReactiveDataDriverContextVariable(projectStream, 1000));
         
 
         // Return the template name (templates/home.html)

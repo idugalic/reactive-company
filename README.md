@@ -268,169 +268,89 @@ The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many application
 
 #### Index page
 
-```bash
-curl -v -H "Accept: text/event-stream" http://localhost:8080
-``` 
-In the response bellow (resolved by [HomeController.java](https://github.com/idugalic/reactive-company/blob/master/src/main/java/com/idugalic/web/HomeController.java)) we are receiving Server-Sent Events (SSE) as requested in CURL command. 
+Open your browser and navigate to http://localhost:8080
 
- - Blog posts are not fully resolve by the Publisher - Thymeleaf will be executed as a part of the data flow
+The response is resolved by [HomeController.java](https://github.com/idugalic/reactive-company/blob/master/src/main/java/com/idugalic/web/HomeController.java) and home.html.
 
- - Projects are fully resolve by the Publisher - Thymeleaf will not be executed as a part of the data flow
+ - Blog posts are fully resolved by the Publisher - Thymeleaf will NOT be executed as a part of the data flow
 
-```html
-* Rebuilt URL to: http://localhost:8080/
-*   Trying 127.0.0.1...
-* TCP_NODELAY set
-* Connected to localhost (127.0.0.1) port 8080 (#0)
-> GET / HTTP/1.1
-> Host: localhost:8080
-> User-Agent: curl/7.51.0
-> Accept: text/event-stream
-> 
-< HTTP/1.1 200 OK
-< transfer-encoding: chunked
-< Content-Type: text/event-stream
-< Content-Language: en-US
-< 
-event: head
-id: 0
-data: <!DOCTYPE html>
-data: <html>
-data: <head>
-data: 
-data: <meta charset="utf-8">
-data: <meta http-equiv="X-UA-Compatible" content="IE=edge">
-data: <meta name="viewport" content="width=device-width, initial-scale=1">
-data: 
-data: <title>Reactive Company</title>
-data: 
-data: <link href="/css/bootstrap.min.css" rel="stylesheet">
-data: <link href="/css/reactive-company.css" rel="stylesheet">
-data: 
-data: </head>
-data: <body>
-data: 	<div class="container">
-data: 		<div class="row">
-data: 			<h3>Blog posts</h3>
-data: 			<table class="table table-striped">
-data: 				<thead>
-data: 					<tr>
-data: 						<th>Title</th>
-data: 						<th>Published</th>
-data: 						<th>Publish time</th>
-data: 					</tr>
-data: 				</thead>
-data: 				<tbody>
-data: 					
+ - Projects are fully resolved by the Publisher - Thymeleaf will NOT be executed as a part of the data flow
 
-event: message
-id: 1
-data:                                   <tr>
-data: 						<td>title1</td>
-data: 						<td>false</td>
-data: 						<td></td>
-data: 					</tr>
+#### Server_Sent events page
 
-event: message
-id: 2
-data:                                   <tr>
-data: 						<td>title2</td>
-data: 						<td>false</td>
-data: 						<td></td>
-data: 					</tr>
+Open your browser and navigate to http://localhost:8080/stream
 
-event: message
-id: 3
-data:                                   <tr>
-data: 						<td>title3</td>
-data: 						<td>false</td>
-data: 						<td></td>
-data: 					</tr>
+This view is resolved by [StreamController.java](https://github.com/idugalic/reactive-company/blob/master/src/main/java/com/idugalic/web/StreamController.java) and sse.html template. 
 
-event: message
-id: 4
-data:                                   <tr>
-data: 						<td>title4</td>
-data: 						<td>false</td>
-data: 						<td></td>
-data: 					</tr>
 
-event: tail
-id: 5
-data: 
-data: 				</tbody>
-data: 			</table>
-data: 		</div>
-data: 		<div class="row">
-data: 			<h3>Projects</h3>
-data: 			<table class="table table-striped">
-data: 			<thead>
-data: 					<tr>
-data: 						<th>Name</th>
-data: 						<th>Repository URL</th>
-data: 						<th>Site URL</th>
-data: 						<th>Category</th>
-data: 						<th>Description</th>
-data: 					</tr>
-data: 				</thead>
-data: 				<tbody>
-data: 					<tr>
-data: 						<td>name1</td>
-data: 						<td>repoUrl1</td>
-data: 						<td>siteUrl1</td>
-data: 						<td>category1</td>
-data: 						<td>description1</td>
-data: 					</tr>
-data: 					<tr>
-data: 						<td>name2</td>
-data: 						<td>repoUrl2</td>
-data: 						<td>siteUrl2</td>
-data: 						<td>category2</td>
-data: 						<td>description2</td>
-data: 					</tr>
-data: 					<tr>
-data: 						<td>name3</td>
-data: 						<td>repoUrl3</td>
-data: 						<td>siteUrl3</td>
-data: 						<td>category3</td>
-data: 						<td>description3</td>
-data: 					</tr>
-data: 					<tr>
-data: 						<td>name4</td>
-data: 						<td>repoUrl4</td>
-data: 						<td>siteUrl4</td>
-data: 						<td>category4</td>
-data: 						<td>description4</td>
-data: 					</tr>
-data: 				</tbody>
-data: 			</table>
-data: 		</div>
-data: 	</div>
-data: 
-data: </body>
-data: </html>
+ - Blog posts are NOT fully resolved by the Publisher 
+ - Thymeleaf will be executed as a part of the data flow 
+ - These events will be rendered in HTML by Thymeleaf
+ 
+ ```java
+@GetMapping(value = "/blog")
+public String blog(final Model model) {
+	final Flux<BlogPost> blogPostStream = this.blogPostRepository.findAll().log();
+	model.addAttribute("blogPosts", new ReactiveDataDriverContextVariable(blogPostStream, 1000));
+	return "sse :: #blogTableBody";
+	}
+ ```
 
-* Curl_http_done: called premature == 0
-* Connection #0 to host localhost left intact
+ - Projects are NOT fully resolved by the Publisher 
+ - Thymeleaf will be executed as a part of the data flow 
+ - These events will be rendered in HTML by Thymeleaf
+ 
+ ```java
+@GetMapping(value = "/project")
+public String project(final Model model) {
+	final Flux<Project> projectStream = this.projectRepository.findAll().log();
+	model.addAttribute("projects", new ReactiveDataDriverContextVariable(projectStream, 1000));
+	return "sse :: #projectTableBody";
+	}
+ ```
+ 
+ - Blog posts (tail) are NOT fully resolved by the Publisher 
+ - Thymeleaf will be executed as a part of the data flow 
+ - These events will be rendered in JSON by Spring WebFlux (using Jackson) 
+ - We are using a [Tailable Cursor](https://docs.mongodb.com/manual/core/tailable-cursors/) that remains open after the client exhausts the results in the initial cursor. Tailable cursors are conceptually equivalent to the tail Unix command with the -f option (i.e. with “follow” mode). After clients insert new additional documents into a capped collection, the tailable cursor will continue to retrieve documents. You may use a Tailable Cursor with [capped collections](https://docs.mongodb.com/manual/core/capped-collections/) only.
+ - If you add a new blog post to the database, it will be displayed on the page in the HTML table.
+ 
+ ```java
+@GetMapping("/tail/blogposts")
+Flux<BlogPost> tail() {
+	LOG.info("Received request: BlogPost - Tail");
+	try {
+		// Using tailable cursor
+		return this.blogPostRepository.findBy().log();
+	} finally {
+		LOG.info("Request pocessed: BlogPost - Tail");
+	}
+}
+ ```
 
-```
 
 #### Blog posts (REST API):
 ```bash
 $ curl http://localhost:8080/blogposts
 ```
-
+or
+```bash
+$ curl -v -H "Accept: text/event-stream" http://localhost:8080/blogposts
+```
 
 #### Projects (REST API):
 ```bash
 $ curl http://localhost:8080/projects
 ```
+or
+```bash
+$ curl -v -H "Accept: text/event-stream" http://localhost:8080/projects
+```
 
-#### EventSource in browser
-
-Navigate to http://localhost:8080/stream in your browser (not IE).
-
-This view is resolved by StreamController and sse.html template. EventSource is used to consume events sent from the server side. These events will be rendered in HTML by Thymeleaf.
+#### Blog posts - tial (REST API)
+```bash
+$ curl -v -H "Accept: text/event-stream" http://localhost:8080/tail/blogposts
+```
 
 ##  Load testing with Gatling
 

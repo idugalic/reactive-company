@@ -1,7 +1,12 @@
 server:
   port: ${PORT:8080}
 
+
 spring:
+  data:
+    mongodb:
+      database: reactivecompany
+      
   thymeleaf: 
     reactive:
       max-chunk-size: 8192
