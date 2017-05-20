@@ -384,6 +384,9 @@ Flux<BlogPost> list() {
 
 We can no longer think in terms of a linear execution model where one request is handled by one thread. The reactive streams will be handled by a lot of threads in their lifecycle. This complicates things when we migrate from the old MVC framework. We no longer can rely on thread affinity for things like the security context or transaction handling.
 
+## Slides
+<iframe width='770' height='515' src='https://gitpitch.com/idugalic/reactive-company/master?grs=github&t=white' frameborder='0' allowfullscreen></iframe>
+
 ## References and further reading
 
 - http://www.reactivemanifesto.org/
