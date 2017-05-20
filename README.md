@@ -276,19 +276,19 @@ The response is resolved by [HomeController.java](https://github.com/idugalic/re
 
  - Projects are fully resolved by the Publisher - Thymeleaf will NOT be executed as a part of the data flow
 
-#### Server_Sent events page
+#### Server-Sent Events page
 
 Open your browser and navigate to http://localhost:8080/stream
 
 This view is resolved by [StreamController.java](https://github.com/idugalic/reactive-company/blob/master/src/main/java/com/idugalic/web/StreamController.java) and sse.html template. 
 
 
- - Blog posts are NOT fully resolved by the Publisher 
+ - *Blog posts* are NOT fully resolved by the Publisher 
  - Thymeleaf will be executed as a part of the data flow 
  - These events will be rendered in HTML by Thymeleaf
  
  ```java
-@GetMapping(value = "/blog")
+@GetMapping(value = "/stream/blog")
 public String blog(final Model model) {
 	final Flux<BlogPost> blogPostStream = this.blogPostRepository.findAll().log();
 	model.addAttribute("blogPosts", new ReactiveDataDriverContextVariable(blogPostStream, 1000));
@@ -296,12 +296,12 @@ public String blog(final Model model) {
 	}
  ```
 
- - Projects are NOT fully resolved by the Publisher 
+ - *Projects* are NOT fully resolved by the Publisher 
  - Thymeleaf will be executed as a part of the data flow 
  - These events will be rendered in HTML by Thymeleaf
  
  ```java
-@GetMapping(value = "/project")
+@GetMapping(value = "/stream/project")
 public String project(final Model model) {
 	final Flux<Project> projectStream = this.projectRepository.findAll().log();
 	model.addAttribute("projects", new ReactiveDataDriverContextVariable(projectStream, 1000));
@@ -309,7 +309,7 @@ public String project(final Model model) {
 	}
  ```
  
- - Blog posts (tail) are NOT fully resolved by the Publisher 
+ - *Blog posts (tail)* are NOT fully resolved by the Publisher 
  - Thymeleaf will be executed as a part of the data flow 
  - These events will be rendered in JSON by Spring WebFlux (using Jackson) 
  - We are using a [Tailable Cursor](https://docs.mongodb.com/manual/core/tailable-cursors/) that remains open after the client exhausts the results in the initial cursor. Tailable cursors are conceptually equivalent to the tail Unix command with the -f option (i.e. with “follow” mode). After clients insert new additional documents into a capped collection, the tailable cursor will continue to retrieve documents. You may use a Tailable Cursor with [capped collections](https://docs.mongodb.com/manual/core/capped-collections/) only.
