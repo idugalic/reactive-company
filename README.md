@@ -401,3 +401,4 @@ We can no longer think in terms of a linear execution model where one request is
 - [asynchronous and non-blocking IO](http://blog.omega-prime.co.uk/?p=155)
 - [Functional and Reactive Spring with Reactor and Netflix OSS](https://dzone.com/articles/functional-amp-reactive-spring-along-with-netflix)
 - https://www.youtube.com/watch?v=rdgJ8fOxJhc
+- https://speakerdeck.com/sdeleuze/functional-web-applications-with-spring-and-kotlin
