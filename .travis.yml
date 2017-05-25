@@ -10,11 +10,16 @@ cache:
     - $HOME/.m2/repository/
 
 deploy:
-  provider: script
-  script: "mvn -s .travis.settings.xml -DpushImage docker:build"
-  skip_cleanup: true
-  on:
-    branch: master
+  - provider: script
+    script: "mvn -s .travis.settings.xml -DskipTests deploy"
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: "mvn -s .travis.settings.xml -DpushImage docker:build"
+    skip_cleanup: true
+    on:
+      branch: master
   
 notifications:
   slack: idugalic:1roOPmlQdmPIn37c3jqgmAq8
