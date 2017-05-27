@@ -22,4 +22,4 @@ deploy:
       branch: master
   
  notifications:
-    slack: namics-bg:IkiLLktP3IopKi5huEwiuk0z
+   slack: namics-bg:IkiLLktP3IopKi5huEwiuk0z
