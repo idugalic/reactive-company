@@ -71,7 +71,6 @@
 		<dependency>
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor.addons</groupId>
@@ -117,6 +116,22 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.cloudfoundry</groupId>
+				<artifactId>cf-maven-plugin</artifactId>
+				<version>1.1.3</version>
+				<configuration>
+					<server>mycloudfoundry-instance</server>
+					<target>https://api.local.pcfdev.io</target>
+					<org>pcfdev-org</org>
+					<space>pcfdev-space</space>
+					<appname>reactive-company</appname>
+					<memory>512</memory>
+					<diskQuota>1024</diskQuota>
+					<healthCheckTimeout>60</healthCheckTimeout>
+					<trustSelfSignedCerts>true</trustSelfSignedCerts>
 				</configuration>
 			</plugin>
 			<plugin>

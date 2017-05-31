@@ -185,18 +185,37 @@ The application is build by [Travis](https://travis-ci.org/idugalic/reactive-com
 
 ### Run the application by maven:
 
-This application is using embedded mongo database for testing only.
-You have to install and run mongo database before you can run the application loacaly.
+This application is using embedded mongo database.
+You do not have to install and run mongo database before you run the application locally.
+
+You can use NON-embedded version of mongo by setting scope of 'de.flapdoodle.embed.mongo' to 'test'. 
+In this case you have to install mongo server locally:
 
 ```bash
 $ brew install mongodb
 $ brew services start mongodb
 ```
+
 Run it:
 
 ```bash
 $ cd reactive-company
 $ ./mvnw spring-boot:run
+```
+
+### Run it on Cloud Foundry (PCF Dev)
+
+Run application on local workstation with PCF Dev
+
+- Download and install PCF: https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction
+- Start the PCF Dev: $ cf dev start -m 8192
+- Push the app to PCF Dev: $ ./mvnw cf:push
+- Enjoy: http://reactive-company.local.pcfdev.io/
+
+You can adopt any CI pipeline you have to deploy your application on any cloud foundry instance, for example:
+
+```bash
+mvn cf:push [-Dcf.appname] [-Dcf.path] [-Dcf.url] [-Dcf.instances] [-Dcf.memory] [-Dcf.no-start] -Dcf.target=https://api.run.pivotal.io
 ```
 
 ### Run the application by Docker
