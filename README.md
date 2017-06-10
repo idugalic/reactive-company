@@ -14,7 +14,8 @@ This project is intended to demonstrate best practices for building a reactive w
        * [Spring Reactive data](#spring-reactive-data)
     * [CI with Travis](#ci-with-travis)
     * [Running instructions](#running-instructions)
-       * [Run the application by maven:](#run-the-application-by-maven)
+       * [Run the application by Maven:](#run-the-application-by-maven)
+       * [Run the application on Cloud Foundry](#run-the-application-on-cloud-foundry)
        * [Run the application by Docker](#run-the-application-by-docker)
           * [Manage docker swarm with Portainer](#manage-docker-swarm-with-portainer)
           * [Manage docker swarm with CLI](#manage-docker-swarm-with-cli)
@@ -203,7 +204,7 @@ $ cd reactive-company
 $ ./mvnw spring-boot:run
 ```
 
-### Run it on Cloud Foundry (PCF Dev)
+### Run the application on Cloud Foundry
 
 Run application on local workstation with PCF Dev
 
