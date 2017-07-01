@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.FluxExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.idugalic.domain.blog.BlogPost;
 import com.idugalic.domain.blog.BlogPostRepository;
@@ -35,6 +36,7 @@ import reactor.test.StepVerifier;
 public class ApplicationIntegrationTest {
 
 	WebTestClient webTestClient;
+	WebClient t;
 	
 	List<BlogPost> expectedBlogPosts;
 	List<Project> expectedProjects;

@@ -215,6 +215,8 @@ A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines,
 
 ```bash
 $ cd reactive-company
+$ ./mvnw clean install
+$ DOCKER_HOST=unix:///var/run/docker.sock ./mvnw docker:build
 $ ./docker-swarm.sh
 ```
 
