@@ -193,8 +193,12 @@ $ mongod
 
 ### Run the application by maven:
 
+- Run the registry (eureka) first and the run other services.
+
 ```bash
-$ cd reactive-company
+$ cd reactive-company/reactive-company-registry
+$ ./mvnw spring-boot:run
+$ cd reactive-company/reactive-company-service
 $ ./mvnw spring-boot:run
 ```
 
@@ -204,7 +208,9 @@ I am running Docker Community Edition, version: 17.05.0-ce-rc1-mac8 (Channel: ed
 
 A [swarm](https://docs.docker.com/engine/swarm/) is a cluster of Docker engines, or nodes, where you deploy services. The Docker Engine CLI and API include commands to manage swarm nodes (e.g., add or remove nodes), and deploy and orchestrate services across the swarm. By running script bellow you will initialize a simple swarm with one node, and you will install services:
 
-- reactive-company
+- reactive-company-service
+- reactive-company-client (TODO)
+- reactive-company-registry
 - mongodb (mongo:3.0.4)
 
 ```bash
@@ -238,14 +244,14 @@ $ docker service ls
 ##### Scale docker services
 
 ```bash
-$ docker service scale stack_reactive-company=2
+$ docker service scale stack_reactive-company-service=2
 ```
 Now you have two tasks/containers running for this service.
 
 ##### Browse docker service logs
 
 ```bash
-$ docker service logs stack_reactive-company -f
+$ docker service logs stack_reactive-company-service -f
 ```
 You will be able to determine what task/container handled the request.
 
@@ -263,7 +269,7 @@ The Swarm load balancer is a basic Layer 4 (TCP) load balancer. Many application
 
 It does not have a built-in runtime L7 (HTTP) load balancer, you need to pick one.
 
-### Browse the application:
+### Browse the application/service:
 
 Blog posts:
 ```bash
@@ -308,6 +314,8 @@ Flux<BlogPost> list() {
 
 We can no longer think in terms of a linear execution model where one request is handled by one thread. The reactive streams will be handled by a lot of threads in their lifecycle. This complicates things when we migrate from the old MVC framework. We no longer can rely on thread affinity for things like the security context or transaction handling.
 
+## Issues
+1. (nested exception is java.lang.NoClassDefFoundError: rx/functions/Func1): I fixed it by deleting the rxjava folder inside .m2/io/reactivex. Then build your project again it should pull down the jar again which should fix the issue.
 ## References and further reading
 
 - http://www.reactivemanifesto.org/
