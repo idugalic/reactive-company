@@ -289,6 +289,7 @@ $ curl http://localhost:8080/projects
 Run application first (by maven or docker)
 
 ```bash
+$ cd reactive-company/reactive-company-service
 $ ./mvnw gatling:execute
 ```
 

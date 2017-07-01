@@ -13,4 +13,4 @@ deploy:
     branch: master
 
 notifications:
-  slack: idugalic:1roOPmlQdmPIn37c3jqgmAq8
+  slack: namics-bg:IkiLLktP3IopKi5huEwiuk0z
