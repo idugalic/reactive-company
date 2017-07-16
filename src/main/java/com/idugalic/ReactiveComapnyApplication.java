@@ -28,7 +28,7 @@ public class ReactiveComapnyApplication {
 	CommandLineRunner initData(ReactiveMongoTemplate reactiveMongoTemplate, BlogPostRepository blogPostRepository, ProjectRepository projectRepository) {
 		return (p) -> {
 			reactiveMongoTemplate.dropCollection(BlogPost.class).then(reactiveMongoTemplate.createCollection(
-					BlogPost.class, CollectionOptions.empty().capped().size(104857600))).block();
+					BlogPost.class, CollectionOptions.empty().capped(104857600).size(104857600))).block();
 			
 			//blogPostRepository.deleteAll().block();
 			blogPostRepository.save(new BlogPost("authorId1", "title1", "content1", "tagString1")).block();
