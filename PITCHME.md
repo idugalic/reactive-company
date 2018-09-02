@@ -2,7 +2,9 @@
 ### And
 ### Reactive Systems
 
-<span style="color:gray">Lab</span>
+<span style="color:gray">by example</span>
+
+[https://github.com/idugalic/reactive-company](https://github.com/idugalic/reactive-company)
 
 ---
 
@@ -172,6 +174,13 @@ Is your web application responsive? <span style="color:gray">There is only one w
 $ ./mvnw gatling:execute
 ```
 
+---
 
+### Thank you
+
+ - Ivan Dugalic
+ - [http://idugalic.pro/](http://idugalic.pro/)
+ - [https://twitter.com/idugalic](https://twitter.com/idugalic)
+ - [https://github.com/idugalic](https://github.com/idugalic)
 
 
